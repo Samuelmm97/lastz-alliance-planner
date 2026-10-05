@@ -84,3 +84,6 @@ Grid detection now runs on a normalized-width layout image while individual labe
 
 Real game examples captured October 5, 2026: hero roster, EXP, skill books, shards; research trees, costs, bonus and queue; active troop batch; vehicle level and named material tooltips. Portrait panels are cropped from the game to exclude surrounding chat. These examples identify fields and materials; they do not confirm event eligibility. No upgrades, purchases or item use were performed during capture. Active remaining timers must not be entered as full new-batch durations.
 
+
+Partial planning: Show my plan uses known building levels and complete goals independently. Missing levels, unsupported upgrades and unfinished optional goals are explained without blocking other recommendations. Empty input shows what to add and points to the event timeline. Missing/invalid construction bonus uses an explicitly labeled 0% estimate; invalid speedup budgets use natural completion. Alliance submissions include known levels plus the partial-plan explanations.
+
