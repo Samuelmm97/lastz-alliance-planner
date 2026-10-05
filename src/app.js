@@ -1,3 +1,4 @@
+import {additionalExamples} from './screenshot-examples.js';
 import './style.css';
 import {createWorker} from 'tesseract.js';
 import {duel,windows,duration,parseScreens,recommend} from './planner.js';
@@ -31,6 +32,7 @@ $('app').innerHTML=`<header><div><div class="brand"><span class="mark">${buildin
 <aside><div class="card"><div class="cardhead"><h2>Event planner</h2><span class="badge">Your local time</span></div><p class="muted" id="timezone"></p><div id="events"></div><details><summary>This week's Alliance Duel</summary><div class="week" id="week"></div></details><div class="notice">Tuesday: construction focus.<br>Friday: balanced growth.<br>Look for a Shelter window on the same day.</div><p class="muted">Future windows follow the community calendar. Server changes and scoring rules need in-game confirmation.</p><details><summary>Where these estimates come from</summary><p class="muted">Construction speed uses base time  /  (1 + bonus / 100). Running timers already include bonuses.</p><p class="muted">UTC -02:00 was observed on the alliance game clock on October 1, 2026. Recurring Full Preparedness themes use the community baseline.</p><a href="https://wild-hoggs.com/tools/building/" target="_blank" rel="noopener">Building data</a>  /  <a href="https://lastz.gg/guides/full-preparedness" target="_blank" rel="noopener">Event calendar</a></details></div></aside></div></main>
 <footer><span>Last Z Alliance Planner  /  Unofficial fan tool</span><button id="leader-open" class="textbutton">Alliance access</button></footer>
 <dialog id="leader-dialog"><h2>Alliance leader access</h2><p>Enter your leader key to view submitted plans.</p><label>Leader key<input id="leader-key" type="password" autocomplete="off"></label><div class="actions"><button id="leader-login" class="primary">View alliance plans</button><button id="leader-close">Close</button></div><div id="leader-status" role="status"></div><div id="leader-plans"></div><div id="leader-diagnostics"></div></dialog>`;
+document.querySelector('.screenshot-examples').insertAdjacentHTML('afterend',additionalExamples());
 let timeline;
 const activities=mountActivities($('activities'),()=>timeline?.update());
 timeline=mountTimeline($('timeline'),()=>draft.offset,()=>activities.trainingGoals());

@@ -81,3 +81,6 @@ The initial diagnostic test reached the live backend, delivered Telegram setup/i
 
 ## High-resolution screenshot reading
 Grid detection now runs on a normalized-width layout image while individual labels, levels and active-timer detection retain the original image pixels. When the heading is unreadable, repeated building rows plus right-hand-column evidence can identify the grid. A secondary layout pass cannot replace a better detected row set with fewer rows. All 55 supplied original levels still matched; a generated 1320×2868 fixture read 15 of 16 levels correctly and left one uncertain level blank. This is coverage for resolution handling, not verification against the member's unavailable original failed images.
+
+Real game examples captured October 5, 2026: hero roster, EXP, skill books, shards; research trees, costs, bonus and queue; active troop batch; vehicle level and named material tooltips. Portrait panels are cropped from the game to exclude surrounding chat. These examples identify fields and materials; they do not confirm event eligibility. No upgrades, purchases or item use were performed during capture. Active remaining timers must not be entered as full new-batch durations.
+
