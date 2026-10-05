@@ -42,9 +42,11 @@ export function parseScreens(text,names) {
    if(expected.length<8||Math.abs(expected.length-normalized.length)>1)return false;
    let a=0,b=0,errors=0;while(a<expected.length&&b<normalized.length){if(expected[a]===normalized[b]){a++;b++;}else{if(++errors>1)return false;if(expected.length>=normalized.length)a++;if(expected.length<=normalized.length)b++;}}return errors+(expected.length-a)+(normalized.length-b)<=1;
   })) continue;
-  const nearby=/(?:Lv\.?|Level)\s*[:.]?\s*\d|\d\s*(?:→|->|»|›|≫|>)/i.test(lines[i])?lines[i]:lines[i]+' '+(lines[i+1]||'');
+  const nextLine=lines[i+1]||'';
+  const nextHasBuilding=names.some(n=>nextLine.toLowerCase().replace(/[^a-z0-9]/g,'').includes(n.toLowerCase().replace(/[^a-z0-9]/g,'')));
+  const nearby=/(?:Lv\.?|Level)\s*[:.]?\s*\d|\d\s*(?:→|->|»|›|≫|>)/i.test(lines[i])||nextHasBuilding?lines[i]:lines[i]+' '+nextLine;
   const pair=nearby.match(/(?:Lv\.?\s*|Level\s*)?(\d{1,2})\s*(?:→|->|»|›|≫|>)\s*(?:Lv\.?\s*|Level\s*)?(\d{1,2})/i);
-  const lv=pair?Number(pair[1]):Number(nearby.match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]||(lines[i-1]||'').match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]);
+  const lv=pair?Number(pair[1]):Number(nearby.match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]);
   found.push({id:crypto.randomUUID(),name,level:lv>=1&&lv<=35?lv:null,active:/upgrading/i.test(nearby)});
  }
  const speed=Number(text.match(/(?:Construction Speed|Building Speed)[^\n%]*?(\d+(?:[.,]\d+)?)\s*%/i)?.[1]?.replace(',','.'));
