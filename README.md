@@ -10,7 +10,7 @@ Leaders use **Alliance access** in the footer and enter the leader key. The key 
 
 GitHub Pages hosts the member interface. A separately deployed Sites/Cloudflare Worker with D1 stores confirmed plans. `public/config.json` contains its public API URL. Backend source is in the separately tracked `alliance-backend` checkout, excluded from this public repository. Its `.openai/hosting.json` retains the actual backend project ID.
 
-The public website contains no screenshots, account snapshots, tokens, or leader credentials. English OCR runs locally using vendored Tesseract.js files. Screenshots are temporary and not stored or sent to the backend. Only the name, speed bonus, confirmed buildings and plan text are sent after pressing Submit. A device-local draft and random update token are stored in the browser. Leaders can see up to the 500 most recent submissions. Rate limits apply per connecting IP (30 API requests/hour).
+The public website includes owner-approved example screenshots, but no member uploads, private account snapshots, tokens, or leader credentials. English OCR runs locally using vendored Tesseract.js files. Screenshots are temporary and not stored or sent to the backend. Only the name, speed bonus, confirmed buildings and plan text are sent after pressing Submit. A device-local draft and random update token are stored in the browser. Leaders can see up to the 500 most recent submissions. Rate limits apply per connecting IP (30 API requests/hour).
 
 ## Development
 
@@ -47,3 +47,8 @@ Heroes (including equipment), vehicles and training have simple confirmed manual
 
 ## Live timeline and visual inventory guide
 The homepage shows 42 consecutive four-hour Full Preparedness windows with a live Now marker and second-by-second countdown. Local timestamps follow the selected game-clock offset. Users can swipe, browse forward, select a window, or return to now. Matching Duel/Balanced windows are highlighted but actual scoring eligibility must be confirmed in-game. Screenshot guides use responsive numbered HTML overlays on the alliance owner's five original warehouse images; counts are examples, not a member's inventory. Wrench/blueprint icons remain explicitly unverified candidates. No OCR inventory identification or automatic allocation of consumables is implied.
+
+## Building List screenshot reading
+Portrait, four-column Building List screenshots are read one card at a time. Each card's name is paired with its own level above it, preserving separate copies of the same building. Adaptive grayscale cleanup preserves the outlined white level digits, and a confident digits-only pass resolves common outline artifacts. Visible green timer bars mark buildings already upgrading. Other layouts retain the normal text reader; unclear levels remain blank for manual confirmation.
+
+Verified in the browser against the owner's four example Building List images. Unit regressions cover level/name pairing, grid geometry, weak OCR rejection and running-upgrade detection. Uploaded screenshots and OCR results remain on the device until members submit confirmed plan details. Reading again adds entries without overwriting existing manual edits.

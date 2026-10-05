@@ -3,6 +3,10 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {effectiveSeconds,parseScreens,windows,recommend} from '../src/planner.js';
 const catalog=JSON.parse(readFileSync(new URL('../public/buildings.json',import.meta.url))).upgrades;
+test('isolated building card pairs the level above its name',()=>{
+ const result=parseScreens('Lv.26\nHeadquarters',['Headquarters'],1,35,{isolatedCard:true});
+ assert.equal(result.buildings[0].level,26);
+});
 test('game labels with a single OCR character error are offered for review, without guessing unknown levels',()=>{const result=parseScreens('RidepCamp)\nLv.25 -> Lv.26\nLaboratory upgrading...\nConstruction Speed Up 255.70%', ['Rider Camp','Laboratory']);assert.equal(result.buildings[0].name,'Rider Camp');assert.equal(result.buildings[0].level,25);assert.equal(result.buildings[1].active,true);assert.equal(result.speed,255.7);const unknown=parseScreens('Laboratory upgrading...',['Laboratory']);assert.equal(unknown.buildings[0].level,null);});
 test('screenshot-supported construction bonus divides the base duration',()=>{assert.ok(Math.abs(effectiveSeconds(3186963,255.70)-895969)<=1);assert.throws(()=>effectiveSeconds(10,-100));});
 test('adjacent building levels are not taken from the previous building',()=>{const data=parseScreens('Headquarters Lv.26\nLaboratory Lv.25 upgrading\nCity Walls Lv.24\nConstruction Speed 255.70%', ['Headquarters','Laboratory','City Walls']);assert.deepEqual(data.buildings.map(b=>b.level),[26,25,24]);assert.equal(data.speed,255.7);assert.equal(data.buildings[1].active,true);});

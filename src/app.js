@@ -3,6 +3,7 @@ import {createWorker} from 'tesseract.js';
 import {duel,windows,duration,parseScreens,recommend} from './planner.js';
 import {mountActivities} from './activities.js';
 import {mountTimeline} from './timeline.js';
+import {readBuildingScreenshot} from './building-reader.js';
 import config from '../public/config.json';
 const $=id=>document.getElementById(id), escape=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 let catalog=[],names=[],buildings=[],results=[],previews=[],busy=false,step=1,activityResults=[];
@@ -53,7 +54,7 @@ $('screens').onchange=()=>{previews.forEach(u=>URL.revokeObjectURL(u));previews=
 $('read').onclick=async()=>{
  if(busy)return;busy=true;$('read').disabled=true;$('manual').disabled=true;$('screens').disabled=true;$('progress').hidden=false;
  let worker;try{let current=0;worker=await createWorker('eng',1,{workerPath:new URL('../vendor/worker.min.js',import.meta.url).href,corePath:new URL('../vendor/core/',import.meta.url).href,langPath:new URL('../vendor/lang/',import.meta.url).href,logger:m=>{if(m.status==='recognizing text'){status(`Reading screenshot ${current+1} of ${$('screens').files.length}...`);$('progress').value=m.progress;}}});
-  let all=[],extraCount=0;const category=$('screen-category').value;for(const file of $('screens').files){const recognized=await worker.recognize(file);if(category==='research')extraCount+=await activities.read(recognized.data.text,category);const parsed=category==='buildings'?parseScreens(recognized.data.text,names):{buildings:[],speed:null};all.push(...parsed.buildings);if(parsed.speed!==null){draft.speed=parsed.speed;$('speed').value=String(parsed.speed);}current++;}
+  let all=[],extraCount=0;const category=$('screen-category').value;for(const file of $('screens').files){let parsed={buildings:[],speed:null};if(category==='buildings')parsed=await readBuildingScreenshot(worker,file,names,(card,total)=>status(`Reading screenshot ${current+1}: building card ${card} of ${total}...`));else{const recognized=await worker.recognize(file);if(category==='research')extraCount+=await activities.read(recognized.data.text,category);}all.push(...parsed.buildings);if(parsed.speed!==null){draft.speed=parsed.speed;$('speed').value=String(parsed.speed);}current++;}
   // Keep separate instances. Never silently overwrite a player's prior buildings.
   if(all.length)buildings.push(...all);showStep(2);renderBuildings();persist();status(extraCount?`Found ${extraCount} research goals. Check the tree, technology and current level below.`:category!=='buildings'&&category!=='research'?'Your screenshots are ready to refer to. Open the relevant section below and enter the named upgrade and costs.':all.length?`Found ${all.length} possible buildings. Check every name and level below.`:'Could not read building names and levels. You can enter them below.',!all.length);
  }catch{showStep(2);renderBuildings();status('Screenshot reading could not finish. Try clearer screenshots or enter your buildings below.',true);}finally{if(worker)await worker.terminate();busy=false;$('read').disabled=!$('screens').files.length;$('manual').disabled=false;$('screens').disabled=false;$('progress').hidden=true;}

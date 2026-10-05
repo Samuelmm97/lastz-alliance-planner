@@ -29,7 +29,7 @@ export function windows(now=new Date(), offset=-120, days=15) {
  }
  return out;
 }
-export function parseScreens(text,names,minLevel=1,maxLevel=35) {
+export function parseScreens(text,names,minLevel=1,maxLevel=35,options={}) {
  const lines=text.split(/\r?\n/), found=[];
  const aliases={'Headquarters':['Headquarters','Headquarter','HQ'],'City Walls':['City Walls','City Wall']};
  for(let i=0;i<lines.length;i++) for(const name of names) {
@@ -44,7 +44,9 @@ export function parseScreens(text,names,minLevel=1,maxLevel=35) {
   })) continue;
   const nextLine=lines[i+1]||'';
   const nextHasBuilding=names.some(n=>nextLine.toLowerCase().replace(/[^a-z0-9]/g,'').includes(n.toLowerCase().replace(/[^a-z0-9]/g,'')));
-  const nearby=/(?:Lv\.?|Level)\s*[:.]?\s*\d|\d\s*(?:→|->|»|›|≫|>)/i.test(lines[i])||nextHasBuilding?lines[i]:lines[i]+' '+nextLine;
+  let nearby=/(?:Lv\.?|Level)\s*[:.]?\s*\d|\d\s*(?:→|->|»|›|≫|>)/i.test(lines[i])||nextHasBuilding?lines[i]:lines[i]+' '+nextLine;
+  // Looking above a name is safe only after isolating one grid card.
+  if(options.isolatedCard)nearby=(lines[i-1]||'')+' '+nearby;
   const pair=nearby.match(/(?:Lv\.?\s*|Level\s*)?(\d{1,2})\s*(?:→|->|»|›|≫|>)\s*(?:Lv\.?\s*|Level\s*)?(\d{1,2})/i);
   const lv=pair?Number(pair[1]):Number(nearby.match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]);
   found.push({id:crypto.randomUUID(),name,level:Number.isInteger(lv)&&lv>=minLevel&&lv<=maxLevel?lv:null,active:/upgrading|researching/i.test(nearby)});
