@@ -32,6 +32,7 @@ test('confident isolated digits repair outlined levels without accepting weak gu
  assert.equal(chooseLevel({text:'Lv.21',confidence:80},{text:'2',confidence:96}),21);
  assert.equal(chooseLevel({text:'Lv.27',confidence:60},{text:'',confidence:0},{text:'22',confidence:96}),22);
  assert.equal(chooseLevel({text:'Lv.19',confidence:20},{text:'1',confidence:0}),null);
+ assert.equal(chooseLevel({text:'Lv.20',confidence:82},{text:'26',confidence:88}),null);
 });
 test('a green timer bar marks an upgrade but a small green arrow does not',()=>{
  const make=(length)=>{const data=new Uint8ClampedArray(100*20*4);for(let y=5;y<10;y++)for(let x=0;x<length;x++){const p=(y*100+x)*4;data[p]=70;data[p+1]=200;data[p+2]=50;data[p+3]=255;}return {data,width:100,height:20};};

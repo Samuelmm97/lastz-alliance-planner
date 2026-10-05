@@ -46,17 +46,27 @@ export function chooseLevel(label,...digits){
   const numeric=levelFromCard(reading.text);
   if(numeric!==null&&reading.confidence>=90&&(displayed===null||String(numeric).length===String(displayed).length))return numeric;
  }
+ // A conflicting numeric read is evidence that the outlined label is ambiguous.
+ if(digits.some(r=>r.confidence>=85&&levelFromCard(r.text)!==null&&levelFromCard(r.text)!==displayed&&String(levelFromCard(r.text)).length===String(displayed).length))return null;
  return label.confidence>=40?displayed:null;
+}
+export async function decodeScreenshot(file){
+ if(typeof createImageBitmap==='function')try{return await createImageBitmap(file);}catch{}
+ const url=URL.createObjectURL(file),image=new Image();
+ try{image.src=url;await image.decode();return {source:image,width:image.naturalWidth,height:image.naturalHeight,close:()=>URL.revokeObjectURL(url)};}
+ catch(error){URL.revokeObjectURL(url);throw error;}
 }
 export function hasUpgradeBar(image){
  let rows=0;
  for(let y=0;y<image.height;y++){let green=0;for(let x=0;x<image.width;x++){const p=(y*image.width+x)*4,r=image.data[p],g=image.data[p+1],b=image.data[p+2];if(g>120&&g>r*1.35&&g>b*1.3)green++;}if(green>image.width*.55)rows++;}
  return rows>=Math.max(2,image.height*.08);
 }
-export async function readBuildingScreenshot(worker,file,names,onCard=()=>{}){
+export async function readBuildingScreenshot(worker,file,names,onCard=()=>{},onStage=()=>{}){
+ onStage('detect_grid');
  const {data}=await worker.recognize(file,{}, {text:true,blocks:true});
  const ordinary=parseScreens(data.text,names);
- const image=await createImageBitmap(file);
+ onStage('decode');
+ const decoded=await decodeScreenshot(file),image=decoded.source||decoded;
  try{
   let rows=gridRows(data,names,image.width,image.height),layout=data;
   if(/building\s*list/i.test(data.text)){
@@ -64,7 +74,8 @@ export async function readBuildingScreenshot(worker,file,names,onCard=()=>{}){
    layout=(await worker.recognize(file,{}, {text:true,blocks:true})).data;
    rows=gridRows(layout,names,image.width,image.height);
   }
-  if(!rows.length)return ordinary;
+  if(!rows.length)return {...ordinary,diagnostics:{mode:'text',width:decoded.width,height:decoded.height,rows:0}};
+  onStage('read_cards');
   const scale=image.width/589,found=[];
   for(let r=0;r<rows.length;r++)for(let c=0;c<4;c++){
    onCard(r*4+c+1,rows.length*4);
@@ -83,9 +94,10 @@ export async function readBuildingScreenshot(worker,file,names,onCard=()=>{}){
    // Read the timer in the same card; never borrow another building's timer.
    const timerCanvas=document.createElement('canvas');timerCanvas.width=Math.ceil(121*scale);timerCanvas.height=Math.ceil(42*scale);const timerContext=timerCanvas.getContext('2d',{willReadFrequently:true});timerContext.drawImage(image,(29+c*136)*scale,top-68*scale,121*scale,42*scale,0,0,timerCanvas.width,timerCanvas.height);
    confirmed.active=hasUpgradeBar(timerContext.getImageData(0,0,timerCanvas.width,timerCanvas.height));
+   confirmed.ocr={mode:'grid',confidence:Math.max(level.data.confidence,digits.data.confidence,widerDigits.data.confidence)};
    found.push(confirmed);
   }
-  return {buildings:found.length?found:ordinary.buildings,speed:ordinary.speed};
- }finally{image.close();await worker.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});}
+  return {buildings:found.length?found:ordinary.buildings,speed:ordinary.speed,diagnostics:{mode:found.length?'grid':'text',width:decoded.width,height:decoded.height,rows:rows.length}};
+ }finally{decoded.close?.();await worker.setParameters({tessedit_pageseg_mode:'3',tessedit_char_whitelist:''});}
 }
 
