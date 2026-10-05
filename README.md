@@ -90,3 +90,6 @@ Partial planning: Show my plan uses known building levels and complete goals ind
 
 Timeline is the default section; Upgrade plan has its own accessible tab and #upgrades link. Training defaults to a 9-hour batch when no duration is supplied. Full new-batch duration can be changed in hours/minutes. Start and finish times, a start countdown and buttons to select their timeline windows are shown. Training estimates assume a free queue and natural completion, with the actual adjusted in-game duration overriding the default.
 
+
+Visual timeline: real game artwork identifies event categories; cropped item art appears only for eligible spending windows. SVG symbols with text labels identify start, finish, save, Full Preparedness and Alliance Duel. Training guidance and scoring details use short labels with expandable explanations. Full highlighted reference screenshots remain available in expandable help; screenshots and item quantities are examples.
+
