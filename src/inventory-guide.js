@@ -17,13 +17,19 @@ export function guideForWindow(w){
  if(!overlap||!['Shelter','Science','Troops'].includes(w.theme))return null;
  return guides[w.theme];
 }
+export function heroDuelItems(w){return w.duel==='Heroes'?[['shards','Orange shards'],['purpleShards','Purple shards'],['blueShards','Blue shards'],['books','Orange skill books'],['recruit','Prime recruit tickets'],['core','Power cores'],['alloy','Enhancement alloys'],['equipment','Hero equipment']]:[];}
+function heroDuelVisuals(w){
+ const items=heroDuelItems(w);if(!items.length)return '';
+ const shots=[{asset:'hero',title:'Hero shards, books and recruiting',regions:[rect(27,227,121,121,'Orange skill books'),rect(443,227,121,121,'Prime recruit tickets'),rect(27,365,397,121,'Universal hero shards'),rect(27,504,537,536,'Individual hero shards')]},{asset:'equipment',title:'Equipment upgrade materials',regions:[rect(27,227,121,121,'Power cores'),rect(166,227,121,121,'Enhancement alloys')]}];
+ return `<section class="hero-duel-guide" aria-label="Thursday Hero Duel items"><h3>${icon('duel')}Thursday · Hero Duel <span class="score-badge single">Duel only</span></h3><div class="eligible-items" aria-label="Items for today’s Alliance Duel">${items.map(([art,label])=>`<div class="item-tile">${itemArt(art)}<strong>${label}</strong></div>`).join('')}</div><p>Recruit → star up heroes → improve skills and equipment. Hero EXP uses the Heroes FP window.</p><details class="screenshot-detail"><summary>${icon('help')}See highlighted hero screenshots</summary>${shots.map(g=>`<div class="inventory-guide"><figure><div class="inventory-image"><img src="./examples/${assets[g.asset]}" alt="${g.title}" width="589" height="1280" loading="lazy">${g.regions.map((r,i)=>`<span class="inventory-highlight" style="left:${r.x}%;top:${r.y}%;width:${r.w}%;height:${r.h}%" aria-hidden="true"><b>${i+1}</b></span>`).join('')}</div></figure><div><h3>${g.title}</h3><ol>${g.regions.map(r=>`<li>${r.label}</li>`).join('')}</ol></div></div>`).join('')}<p>Use materials for upgrades you need. Keep equipped orange gear; check the live Duel tasks before consuming spare equipment or exclusive equipment fragments.</p></details></section>`;
+}
 export function mountInventoryGuide(container){
  let selected='';
  function show(w){const key=w.theme+':'+w.duel;if(selected===key)return;selected=key;const guide=guideForWindow(w);
- if(!guide){container.innerHTML=w.theme==='Vehicle'&&w.double?`<div class="visual-notice">${icon('check')}<span>Vehicle materials: confirm live tasks first.</span></div>`:'';return;}
+ if(!guide){container.innerHTML=(w.theme==='Vehicle'&&w.double?`<div class="visual-notice">${icon('check')}<span>Vehicle materials: confirm live tasks first.</span></div>`:'')+heroDuelVisuals(w);return;}
  const items=w.theme==='Heroes'?[['exp','Hero EXP']]:w.theme==='Troops'?[['training','Training speedups']]:[[w.theme==='Shelter'?'construction':'research',guide.title],['universal','Universal speedups']];
  container.innerHTML=`<div class="eligible-items" aria-label="Items to use in this window">${items.map(([art,label])=>`<div class="item-tile">${itemArt(art)}<strong>${label}</strong></div>`).join('')}</div><details class="screenshot-detail"><summary>${icon('help')}See highlighted screenshot</summary><div class="inventory-guide"><figure><div class="inventory-image"><img src="./examples/${assets[guide.asset]}" alt="Last Z screenshot highlighting ${guide.title} for the selected time window" width="${guide.width||589}" height="${guide.height||1280}" loading="lazy">${guide.regions.map((r,i)=>`<span class="inventory-highlight" style="left:${r.x}%;top:${r.y}%;width:${r.w}%;height:${r.h}%" aria-hidden="true"><b>${i+1}</b></span>`).join('')}</div></figure><div><h3>${guide.title}</h3><ol>${guide.regions.map(r=>`<li>${r.label}</li>`).join('')}</ol><p>${guide.note}</p><a href="./examples/${assets[guide.asset]}" target="_blank" rel="noopener">Open original screenshot</a></div></div></details>`;
-
+ container.innerHTML+=heroDuelVisuals(w);
  }
  return {show};
 }

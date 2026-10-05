@@ -23,6 +23,10 @@ export function themeArt(theme){
 }
 export function itemArt(item){
  if(item==='exp')return crop('hero-level-exp.png',303,658,92,525,23,24);
+ const hero={books:[35,235,100,85],shards:[35,373,100,85],purpleShards:[174,373,100,85],blueShards:[312,373,100,85],recruit:[452,240,100,85]}[item];
+ if(hero)return crop('warehouse-hero.jpg',589,1280,...hero);
+ const gear={core:[35,235,100,85],alloy:[174,235,100,85],equipment:[312,235,100,85]}[item];
+ if(gear)return crop('warehouse-equipment.jpg',589,1280,...gear);
  const region={construction:[40,680,72,54],research:[180,541,72,54],training:[455,266,72,54],universal:[45,265,72,54]}[item];
  return crop('warehouse-speedups.jpg',589,1280,...region);
 }
