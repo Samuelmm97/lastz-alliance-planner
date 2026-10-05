@@ -34,7 +34,14 @@ export function parseScreens(text,names) {
  const aliases={'Headquarters':['Headquarters','Headquarter','HQ'],'City Walls':['City Walls','City Wall']};
  for(let i=0;i<lines.length;i++) for(const name of names) {
   const opts=aliases[name]||[name];
-  if(!opts.some(n=>new RegExp('\\b'+n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i').test(lines[i]))) continue;
+  const normalized=lines[i].toLowerCase().replace(/[^a-z0-9]/g,'');
+  if(!opts.some(n=>{
+   const expected=n.toLowerCase().replace(/[^a-z0-9]/g,'');
+   if(new RegExp('\\b'+n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i').test(lines[i])||normalized.includes(expected))return true;
+   // A single OCR character error in a standalone long label is a review candidate.
+   if(expected.length<8||Math.abs(expected.length-normalized.length)>1)return false;
+   let a=0,b=0,errors=0;while(a<expected.length&&b<normalized.length){if(expected[a]===normalized[b]){a++;b++;}else{if(++errors>1)return false;if(expected.length>=normalized.length)a++;if(expected.length<=normalized.length)b++;}}return errors+(expected.length-a)+(normalized.length-b)<=1;
+  })) continue;
   const nearby=/(?:Lv\.?|Level)\s*[:.]?\s*\d|\d\s*(?:→|->|»|›|≫|>)/i.test(lines[i])?lines[i]:lines[i]+' '+(lines[i+1]||'');
   const pair=nearby.match(/(?:Lv\.?\s*|Level\s*)?(\d{1,2})\s*(?:→|->|»|›|≫|>)\s*(?:Lv\.?\s*|Level\s*)?(\d{1,2})/i);
   const lv=pair?Number(pair[1]):Number(nearby.match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]||(lines[i-1]||'').match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]);
