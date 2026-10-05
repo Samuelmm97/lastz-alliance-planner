@@ -87,3 +87,6 @@ Real game examples captured October 5, 2026: hero roster, EXP, skill books, shar
 
 Partial planning: Show my plan uses known building levels and complete goals independently. Missing levels, unsupported upgrades and unfinished optional goals are explained without blocking other recommendations. Empty input shows what to add and points to the event timeline. Missing/invalid construction bonus uses an explicitly labeled 0% estimate; invalid speedup budgets use natural completion. Alliance submissions include known levels plus the partial-plan explanations.
 
+
+Timeline is the default section; Upgrade plan has its own accessible tab and #upgrades link. Training defaults to a 9-hour batch when no duration is supplied. Full new-batch duration can be changed in hours/minutes. Start and finish times, a start countdown and buttons to select their timeline windows are shown. Training estimates assume a free queue and natural completion, with the actual adjusted in-game duration overriding the default.
+

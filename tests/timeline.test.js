@@ -1,6 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {timelineState,timelineAdvice,trainingSchedule} from '../src/timeline.js';
+import {timelineState,timelineAdvice,trainingSchedule,trainingMinutes} from '../src/timeline.js';
+
+test('blank training input defaults to nine hours and custom batches retain their duration',()=>{
+ assert.equal(trainingMinutes('',''),540);
+ assert.equal(trainingMinutes('9','0'),540);
+ assert.equal(trainingMinutes('2','30'),150);
+ for(const [h,m] of [['0','0'],['-1','0'],['1','60'],['1.5','0'],['16666','59']])assert.equal(trainingMinutes(h,m),null);
+ const state=timelineState(new Date('2026-10-05T18:30:00Z'),-120,[{minutes:trainingMinutes('','')}]);
+ assert.equal(state.training[0].finish-state.training[0].start,9*3600000);
+ assert.equal(state.slots.flatMap(w=>w.trainingStarts).length,1);
+ assert.equal(state.slots.flatMap(w=>w.trainingFinishes).length,1);
+});
 test('timeline advances at boundaries and matches each use to its theme',()=>{
  const before=timelineState(new Date('2026-10-06T13:59:59Z'),-120);
  const after=timelineState(new Date('2026-10-06T14:00:00Z'),-120);
