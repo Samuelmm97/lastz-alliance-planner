@@ -4,6 +4,7 @@ import {timelineState,timelineAdvice,trainingSchedule,trainingMinutes} from '../
 
 test('blank training input defaults to nine hours and custom batches retain their duration',()=>{
  assert.equal(trainingMinutes('',''),540);
+ assert.equal(trainingMinutes('','0'),540);
  assert.equal(trainingMinutes('9','0'),540);
  assert.equal(trainingMinutes('2','30'),150);
  for(const [h,m] of [['0','0'],['-1','0'],['1','60'],['1.5','0'],['16666','59']])assert.equal(trainingMinutes(h,m),null);

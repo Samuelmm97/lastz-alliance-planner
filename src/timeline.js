@@ -2,7 +2,7 @@ import {mountInventoryGuide} from './inventory-guide.js';
 import {windows} from './planner.js';
 const titles={Shelter:'Construction',Science:'Research',Heroes:'Heroes',Vehicle:'Vehicles',Troops:'Troop training'};
 export function trainingMinutes(hours,minutes){
- if(hours===''&&minutes==='')return 540;
+ if(hours===''&&(minutes===''||minutes==='0'))return 540;
  const h=Number(hours),m=Number(minutes),total=h*60+m;
  return Number.isInteger(h)&&h>=0&&Number.isInteger(m)&&m>=0&&m<60&&total>0&&total<=1000000?total:null;
 }
