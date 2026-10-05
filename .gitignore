@@ -3,3 +3,4 @@ dist/
 .sites-runtime/
 alliance-backend/
 .local/
+*.traineddata
