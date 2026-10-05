@@ -2,6 +2,17 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {timelineState,timelineAdvice,trainingSchedule,trainingMinutes} from '../src/timeline.js';
 
+test('daily Boomers fill non-overlap vehicle windows while materials stay saved',()=>{
+ for(const duel of ['Shelter','Science','Troops','Heroes','Rest']){
+  const advice=timelineAdvice({theme:'Vehicle',duel});
+  assert.equal(advice.dailyTask,'boomers');assert.equal(advice.double,false);
+  assert.match(advice.action,/remaining daily Boomers/);assert.match(advice.action,/5 per day/);
+  assert.match(advice.use,/Save vehicle upgrade materials/);
+ }
+ for(const duel of ['Vehicle','Balanced'])assert.equal(timelineAdvice({theme:'Vehicle',duel}).dailyTask,undefined);
+ assert.equal(timelineAdvice({theme:'Shelter',duel:'Rest'}).dailyTask,undefined);
+});
+
 test('blank training input defaults to nine hours and custom batches retain their duration',()=>{
  assert.equal(trainingMinutes('',''),540);
  assert.equal(trainingMinutes('','0'),540);

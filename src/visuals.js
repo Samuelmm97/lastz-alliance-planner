@@ -1,5 +1,6 @@
 import {buildingIcon} from './building-assets.js';
 const paths={
+ target:'<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/>',
  timeline:'<path d="M4 7h16M4 17h16M7 4v6m10 4v6"/>',
  plan:'<path d="M8 5H5v15h14V5h-3M8 3h8v4H8zM8 12h8m-8 4h5"/>',
  start:'<path d="m8 5 11 7-11 7z"/>',
