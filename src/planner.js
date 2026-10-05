@@ -37,8 +37,8 @@ export function parseScreens(text,names) {
   if(!opts.some(n=>new RegExp('\\b'+n.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b','i').test(lines[i]))) continue;
   const nearby=/(?:Lv\.?|Level)\s*[:.]?\s*\d|\d\s*(?:→|->|»|›|≫|>)/i.test(lines[i])?lines[i]:lines[i]+' '+(lines[i+1]||'');
   const pair=nearby.match(/(?:Lv\.?\s*|Level\s*)?(\d{1,2})\s*(?:→|->|»|›|≫|>)\s*(?:Lv\.?\s*|Level\s*)?(\d{1,2})/i);
-  const lv=pair?Number(pair[1]):Number(nearby.match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]);
-  if(lv>=1&&lv<=35) found.push({id:crypto.randomUUID(),name,level:lv,active:/upgrading/i.test(nearby)});
+  const lv=pair?Number(pair[1]):Number(nearby.match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]||(lines[i-1]||'').match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]);
+  found.push({id:crypto.randomUUID(),name,level:lv>=1&&lv<=35?lv:null,active:/upgrading/i.test(nearby)});
  }
  const speed=Number(text.match(/(?:Construction Speed|Building Speed)[^\n%]*?(\d+(?:[.,]\d+)?)\s*%/i)?.[1]?.replace(',','.'));
  return {buildings:found,speed:Number.isFinite(speed)?speed:null};
