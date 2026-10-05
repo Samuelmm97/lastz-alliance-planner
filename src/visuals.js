@@ -16,6 +16,7 @@ const paths={
 export function icon(name){return `<svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name]||paths.help}</svg>`;}
 function crop(file,sw,sh,x,y,w,h){return `<span class="game-art" aria-hidden="true" style="background-image:url('./examples/${file}');background-size:${sw/w*100}% ${sh/h*100}%;background-position:${x/(sw-w)*100}% ${y/(sh-h)*100}%"></span>`;}
 export function themeArt(theme){
+ if(theme==='Boomers')return crop('boomer-danger-lurks.webp',634,1024,155,168,355,355);
  if(theme==='Heroes')return crop('hero-level-exp.png',303,658,48,95,205,175);
  if(theme==='Vehicle')return crop('vehicle-upgrade.png',1154,658,414,189,266,200);
  return buildingIcon({Shelter:'Headquarters',Science:'Laboratory',Troops:'Rider Camp'}[theme]||'Headquarters');

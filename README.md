@@ -93,3 +93,6 @@ Timeline is the default section; Upgrade plan has its own accessible tab and #up
 
 Visual timeline: real game artwork identifies event categories; cropped item art appears only for eligible spending windows. SVG symbols with text labels identify start, finish, save, Full Preparedness and Alliance Duel. Training guidance and scoring details use short labels with expandable explanations. Full highlighted reference screenshots remain available in expandable help; screenshots and item quantities are examples.
 
+
+Boomer thumbnail: Danger Lurks screenshot from https://www.ldshop.gg/blog/last-z/daily-task-guide.html (accessed October 5, 2026), original image https://shop.ldrescdn.com/rms/ld-space/process/img/9390fbe94562457298b02cf388db37401779961612.webp . Shown as a CSS crop of the Boomer portrait; full reference preserved in public/examples/boomer-danger-lurks.webp. Daily five-Boomer timing follows the alliance owner's instruction, not this source's recommendations.
+
