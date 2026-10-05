@@ -1,4 +1,5 @@
 import {icon,itemArt} from './visuals.js';
+import {radarVisuals} from './radar-guide.js';
 const assets={heroExp:'hero-level-exp.png',speed:'warehouse-speedups.jpg',resources:'warehouse-resources.jpg',equipment:'warehouse-equipment.jpg',hero:'warehouse-hero.jpg',items:'warehouse-items.jpg'};
 // Coordinates are percentages of the original 589 x 1280 screenshots.
 const rect=(x,y,w,h,label)=>({x:x/589*100,y:y/1280*100,w:w/589*100,h:h/1280*100,label});
@@ -26,10 +27,10 @@ function heroDuelVisuals(w){
 export function mountInventoryGuide(container){
  let selected='';
  function show(w){const key=w.theme+':'+w.duel;if(selected===key)return;selected=key;const guide=guideForWindow(w);
- if(!guide){container.innerHTML=(w.theme==='Vehicle'&&w.double?`<div class="visual-notice">${icon('check')}<span>Vehicle materials: confirm live tasks first.</span></div>`:'')+heroDuelVisuals(w);return;}
+ if(!guide){container.innerHTML=(w.theme==='Vehicle'&&w.double?`<div class="visual-notice">${icon('check')}<span>Vehicle materials: confirm live tasks first.</span></div>`:'')+radarVisuals(w)+heroDuelVisuals(w);return;}
  const items=w.theme==='Heroes'?[['exp','Hero EXP']]:w.theme==='Troops'?[['training','Training speedups']]:[[w.theme==='Shelter'?'construction':'research',guide.title],['universal','Universal speedups']];
  container.innerHTML=`<div class="eligible-items" aria-label="Items to use in this window">${items.map(([art,label])=>`<div class="item-tile">${itemArt(art)}<strong>${label}</strong></div>`).join('')}</div><details class="screenshot-detail"><summary>${icon('help')}See highlighted screenshot</summary><div class="inventory-guide"><figure><div class="inventory-image"><img src="./examples/${assets[guide.asset]}" alt="Last Z screenshot highlighting ${guide.title} for the selected time window" width="${guide.width||589}" height="${guide.height||1280}" loading="lazy">${guide.regions.map((r,i)=>`<span class="inventory-highlight" style="left:${r.x}%;top:${r.y}%;width:${r.w}%;height:${r.h}%" aria-hidden="true"><b>${i+1}</b></span>`).join('')}</div></figure><div><h3>${guide.title}</h3><ol>${guide.regions.map(r=>`<li>${r.label}</li>`).join('')}</ol><p>${guide.note}</p><a href="./examples/${assets[guide.asset]}" target="_blank" rel="noopener">Open original screenshot</a></div></div></details>`;
- container.innerHTML+=heroDuelVisuals(w);
+ container.innerHTML+=radarVisuals(w)+heroDuelVisuals(w);
  }
  return {show};
 }
