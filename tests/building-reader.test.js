@@ -13,6 +13,7 @@ test('grid geometry separates multi-column names from their preceding levels',()
  const data={text:'Building List',blocks:[{paragraphs:[{lines}]}]};
  assert.deepEqual(gridRows(data,['Residence','Lab No.2','Villa','Military Center','Headquarters','City Walls','Laboratory'],589,1280),[382,589]);
  assert.deepEqual(gridRows({...data,text:'Upgrade Headquarters'},['Headquarters'],589,1280),[]);
+ assert.deepEqual(gridRows({...data,text:'heading unreadable'},['Residence','Lab No.2','Villa','Military Center','Headquarters','City Walls','Laboratory'],589,1280,true),[382,589]);
 });
 test('single-line and wrapped building labels use the same level row',()=>{
  const data={blocks:[{paragraphs:[{lines:[{text:'Lv.20',bbox:{x0:62,x1:120,y0:354,y1:374}},{text:'Lv.21',bbox:{x0:198,x1:255,y0:354,y1:374}},{text:'Residence',bbox:{x0:32,x1:150,y0:390,y1:404}}]}]}]};

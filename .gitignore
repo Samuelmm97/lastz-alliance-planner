@@ -4,3 +4,5 @@ dist/
 alliance-backend/
 .local/
 *.traineddata
+__pycache__/
+*.pyc

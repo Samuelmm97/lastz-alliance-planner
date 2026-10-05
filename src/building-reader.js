@@ -1,7 +1,7 @@
 import {parseScreens} from './planner.js';
 const normalized=s=>s.toLowerCase().replace(/[^a-z0-9]/g,'');
-export function gridRows(data,names,width,height){
- if(!/building\s*list/i.test(data.text)||width/height<.38||width/height>.55)return [];
+export function gridRows(data,names,width,height,allowWithoutTitle=false){
+ if((!allowWithoutTitle&&!/building\s*list/i.test(data.text))||width/height<.38||width/height>.55)return [];
  const lines=(data.blocks||[]).flatMap(b=>(b.paragraphs||[]).flatMap(p=>p.lines||[])).sort((a,b)=>a.bbox.y0-b.bbox.y0);
  const rows=[];
  for(let i=0;i<lines.length;i++){
@@ -62,37 +62,47 @@ export function hasUpgradeBar(image){
  return rows>=Math.max(2,image.height*.08);
 }
 export async function readBuildingScreenshot(worker,file,names,onCard=()=>{},onStage=()=>{}){
- onStage('detect_grid');
- const {data}=await worker.recognize(file,{}, {text:true,blocks:true});
- const ordinary=parseScreens(data.text,names);
  onStage('decode');
- const decoded=await decodeScreenshot(file),image=decoded.source||decoded;
+ const decoded=await decodeScreenshot(file);
  try{
+  // Keep card OCR at the same tested resolution on Retina phones and desktops.
+  const image=document.createElement('canvas');image.width=Math.min(589,decoded.width);image.height=Math.round(decoded.height*image.width/decoded.width);
+  const context=image.getContext('2d');context.imageSmoothingEnabled=true;context.imageSmoothingQuality='high';context.drawImage(decoded.source||decoded,0,0,image.width,image.height);
+  onStage('detect_grid');
+  const {data}=await worker.recognize(image,{}, {text:true,blocks:true});
+  const ordinary=parseScreens(data.text,names);
   let rows=gridRows(data,names,image.width,image.height),layout=data;
-  if(/building\s*list/i.test(data.text)){
+  if(/building\s*list/i.test(data.text)||ordinary.buildings.length>=4){
    await worker.setParameters({tessedit_pageseg_mode:'11'});
-   layout=(await worker.recognize(file,{}, {text:true,blocks:true})).data;
-   rows=gridRows(layout,names,image.width,image.height);
+   const sparse=(await worker.recognize(image,{}, {text:true,blocks:true})).data;
+   const candidate=gridRows(sparse,names,image.width,image.height,true);
+   // A missing OCR heading must not disable card reading. Require repeated
+   // card rows and horizontal evidence before accepting an untitled grid.
+   const lines=(sparse.blocks||[]).flatMap(b=>(b.paragraphs||[]).flatMap(p=>p.lines||[]));
+   const columns=lines.filter(l=>candidate.some(y=>Math.abs(l.bbox.y0-y)<image.height*.04)&&l.bbox.x0>image.width*.4);
+   if(/building\s*list/i.test(data.text)||(candidate.length>=2&&columns.length>=2)){
+    layout=sparse;if(candidate.length>=rows.length)rows=candidate;
+   }
   }
   if(!rows.length)return {...ordinary,diagnostics:{mode:'text',width:decoded.width,height:decoded.height,rows:0}};
   onStage('read_cards');
-  const scale=image.width/589,found=[];
+  const cardSource=decoded.source||decoded,scale=decoded.width/589,found=[];
   for(let r=0;r<rows.length;r++)for(let c=0;c<4;c++){
    onCard(r*4+c+1,rows.length*4);
    await worker.setParameters({tessedit_pageseg_mode:'6',tessedit_char_whitelist:''});
-   const top=gridLevelTop(layout,rows[r],image.width);
-   const label=await worker.recognize(crop(image,(28+c*136)*scale,top+25*scale,128*scale,46*scale));
+   const top=gridLevelTop(layout,rows[r],image.width)*decoded.width/image.width;
+   const label=await worker.recognize(crop(cardSource,(28+c*136)*scale,top+25*scale,128*scale,46*scale));
    const parsed=parseScreens(label.data.text.replace(/\n/g,' '),names).buildings;
    if(parsed.length!==1)continue;
    await worker.setParameters({tessedit_pageseg_mode:'7'});
-   const level=await worker.recognize(crop(image,(42+c*136)*scale,top-4*scale,96*scale,28*scale,true));
+   const level=await worker.recognize(crop(cardSource,(42+c*136)*scale,top-4*scale,96*scale,28*scale,true));
    await worker.setParameters({tessedit_char_whitelist:'0123456789'});
-   const digits=await worker.recognize(crop(image,(94+c*136)*scale,top-5*scale,30*scale,29*scale));
-   const widerDigits=await worker.recognize(crop(image,(90+c*136)*scale,top-5*scale,34*scale,29*scale));
+   const digits=await worker.recognize(crop(cardSource,(94+c*136)*scale,top-5*scale,30*scale,29*scale));
+   const widerDigits=await worker.recognize(crop(cardSource,(90+c*136)*scale,top-5*scale,34*scale,29*scale));
    const value=chooseLevel(level.data,digits.data,widerDigits.data);
    const confirmed=parseScreens(`Lv.${value??'?'}\n${parsed[0].name}`,names,1,35,{isolatedCard:true}).buildings[0];
    // Read the timer in the same card; never borrow another building's timer.
-   const timerCanvas=document.createElement('canvas');timerCanvas.width=Math.ceil(121*scale);timerCanvas.height=Math.ceil(42*scale);const timerContext=timerCanvas.getContext('2d',{willReadFrequently:true});timerContext.drawImage(image,(29+c*136)*scale,top-68*scale,121*scale,42*scale,0,0,timerCanvas.width,timerCanvas.height);
+   const timerCanvas=document.createElement('canvas');timerCanvas.width=Math.ceil(121*scale);timerCanvas.height=Math.ceil(42*scale);const timerContext=timerCanvas.getContext('2d',{willReadFrequently:true});timerContext.drawImage(cardSource,(29+c*136)*scale,top-68*scale,121*scale,42*scale,0,0,timerCanvas.width,timerCanvas.height);
    confirmed.active=hasUpgradeBar(timerContext.getImageData(0,0,timerCanvas.width,timerCanvas.height));
    confirmed.ocr={mode:'grid',confidence:Math.max(level.data.confidence,digits.data.confidence,widerDigits.data.confidence)};
    found.push(confirmed);
