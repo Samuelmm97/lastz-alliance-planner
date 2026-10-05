@@ -40,3 +40,7 @@ Backend checks: `node --test tests/security.test.mjs` from the backend checkout,
 ## Third-party assets
 
 Tesseract.js and tesseract.js-core: Apache-2.0, https://github.com/naptha/tesseract.js. English trained data: https://github.com/naptha/tessdata. See `public/vendor/` license files. Community building data: https://wild-hoggs.com/tools/building/ (unofficial fan data).
+
+## Other upgrade goals
+Research uses a lazily loaded community catalog (4,075 transitions across 21 trees), its own speed bonus, tree-qualified technology IDs and level zero. Ambiguous screenshot labels require a tree selection. Missing laboratory, research and season requirements remain explicit unknowns; timing assumes they are satisfied.
+Heroes (including equipment), vehicles and training have simple confirmed manual goals. Portrait recognition and automatic hero/vehicle cost inference are not implemented. Optional owned/needed quantities refer to one identical item, not total affordability. Training duration is the adjusted in-game batch timer, never divided by speed again. Each goal independently targets matching Full Preparedness and Duel/Balanced windows; resources are not reserved between scenarios. These categories share a readable summary with leaders, and drafts stay on the member device. Research-only and other-only submissions are supported.

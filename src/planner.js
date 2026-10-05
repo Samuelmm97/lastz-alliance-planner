@@ -29,7 +29,7 @@ export function windows(now=new Date(), offset=-120, days=15) {
  }
  return out;
 }
-export function parseScreens(text,names) {
+export function parseScreens(text,names,minLevel=1,maxLevel=35) {
  const lines=text.split(/\r?\n/), found=[];
  const aliases={'Headquarters':['Headquarters','Headquarter','HQ'],'City Walls':['City Walls','City Wall']};
  for(let i=0;i<lines.length;i++) for(const name of names) {
@@ -47,7 +47,7 @@ export function parseScreens(text,names) {
   const nearby=/(?:Lv\.?|Level)\s*[:.]?\s*\d|\d\s*(?:→|->|»|›|≫|>)/i.test(lines[i])||nextHasBuilding?lines[i]:lines[i]+' '+nextLine;
   const pair=nearby.match(/(?:Lv\.?\s*|Level\s*)?(\d{1,2})\s*(?:→|->|»|›|≫|>)\s*(?:Lv\.?\s*|Level\s*)?(\d{1,2})/i);
   const lv=pair?Number(pair[1]):Number(nearby.match(/(?:Lv\.?|Level)\s*[:.]?\s*(\d{1,2})/i)?.[1]);
-  found.push({id:crypto.randomUUID(),name,level:lv>=1&&lv<=35?lv:null,active:/upgrading/i.test(nearby)});
+  found.push({id:crypto.randomUUID(),name,level:Number.isInteger(lv)&&lv>=minLevel&&lv<=maxLevel?lv:null,active:/upgrading|researching/i.test(nearby)});
  }
  const speed=Number(text.match(/(?:Construction Speed|Building Speed)[^\n%]*?(\d+(?:[.,]\d+)?)\s*%/i)?.[1]?.replace(',','.'));
  return {buildings:found,speed:Number.isFinite(speed)?speed:null};
