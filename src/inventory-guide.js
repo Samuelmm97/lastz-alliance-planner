@@ -10,11 +10,16 @@ export const guides={
  equipment:{title:'Hero equipment',asset:'equipment',regions:[rect(27,227,259,122,'Equipment materials: open the item details'),rect(304,227,260,122,'Equipment and its displayed level')],note:'Check the exact equipment material requirements in-game. Equipment upgrades may not score in every Heroes event.'},
  resources:{title:'Resource supplies',asset:'resources',regions:[rect(27,227,537,398,'Resource chests'),rect(27,642,537,257,'Resource packs and their quantities')],note:'Resources pay upgrade costs. Opening packs is not assumed to earn event points. Open only what your confirmed upgrade needs; chest contents must be checked in-game.'}
 };
+export function guideForWindow(w){
+ const overlap=w.duel===w.theme||w.duel==='Balanced';
+ if(!overlap||!['Shelter','Science','Troops'].includes(w.theme))return null;
+ return guides[w.theme];
+}
 export function mountInventoryGuide(container){
  let selected='';
- function show(key){if(selected===key)return;selected=key;const guide=guides[key]||guides.Shelter;
- container.innerHTML=`<details open><summary>See item examples</summary><div class="inventory-tabs">${Object.entries(guides).map(([k,g])=>`<button data-guide="${k}" aria-pressed="${k===key}">${g.title}</button>`).join('')}</div><div class="inventory-guide"><figure><div class="inventory-image"><img src="./examples/${assets[guide.asset]}" alt="Warehouse ${guide.asset} screenshot with numbered highlights for ${guide.title}" width="589" height="1280" loading="lazy">${guide.regions.map((r,i)=>`<span class="inventory-highlight" style="left:${r.x}%;top:${r.y}%;width:${r.w}%;height:${r.h}%" aria-hidden="true"><b>${i+1}</b></span>`).join('')}</div></figure><div><h3>${guide.title}</h3><p class="muted">Highlighted on your alliance's example screenshots. Your inventory and quantities will be different.</p><ol>${guide.regions.map(r=>`<li>${r.label}</li>`).join('')}</ol><p>${guide.note}</p><a href="./examples/${assets[guide.asset]}" target="_blank" rel="noopener">Open original screenshot</a></div></div></details>`;
+ function show(w){const key=w.theme+':'+w.duel;if(selected===key)return;selected=key;const guide=guideForWindow(w);
+ if(!guide){const message=w.theme==='Heroes'?'Use Hero EXP on the hero level-up screen. The warehouse books and shards are different items, so they are not highlighted.':w.theme==='Vehicle'&&w.double?'Use only vehicle materials confirmed by the live event tasks. We do not yet have a verified screenshot of those items.':w.theme==='Troops'?'Let training finish naturally in this window. Save speedups for the next matching Full Preparedness + Alliance Duel window.':'Save these items for the next matching Full Preparedness + Alliance Duel window.';container.innerHTML='<div class="notice">'+message+'</div>';return;}
+ container.innerHTML=`<details open><summary>Items to use in this window</summary><div class="inventory-guide"><figure><div class="inventory-image"><img src="./examples/${assets[guide.asset]}" alt="Warehouse screenshot highlighting only ${guide.title} for the selected event overlap" width="589" height="1280" loading="lazy">${guide.regions.map((r,i)=>`<span class="inventory-highlight" style="left:${r.x}%;top:${r.y}%;width:${r.w}%;height:${r.h}%" aria-hidden="true"><b>${i+1}</b></span>`).join('')}</div></figure><div><h3>${guide.title}</h3><p class="muted">Use the highlighted items only for an eligible upgrade in this selected overlap. Your quantities will be different.</p><ol>${guide.regions.map(r=>`<li>${r.label}</li>`).join('')}</ol><p>${guide.note}</p><a href="./examples/${assets[guide.asset]}" target="_blank" rel="noopener">Open original screenshot</a></div></div></details>`;
  }
- container.onclick=e=>{const key=e.target.dataset.guide;if(key)show(key);};
- show('Shelter');return {show};
+ return {show};
 }

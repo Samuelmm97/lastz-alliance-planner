@@ -66,3 +66,6 @@ Screenshot help displays a support code and website version, with Report screens
 Saved building lists are not automatically re-read. To refresh old results, select Replace my current building list with these screenshots and read the originals again. Missing levels are highlighted and can be filtered. Conflicting readings remain blank for confirmation. Safari image decoding has an Image fallback. The four supplied examples were verified with all 55 upgradeable levels and four running upgrades.
 
 Building review and recommendation rows use matching artwork from the owner's example screenshots. The 29 available building types have explicit name-to-image positions; other types use neutral initials instead of unrelated artwork.
+
+## Contextual item highlights
+The timeline's screenshot guide follows the selected Full Preparedness and Duel window. Construction, research and training speedups are highlighted only in matching Duel/Balanced overlaps. Save-only and natural-training windows show instructions without highlighted consumables. Heroes windows explain Hero EXP without highlighting warehouse books or shards; vehicle windows omit unverified wrench/blueprint candidates. Independent inventory tabs have been removed so members cannot accidentally show a conflicting spending image for the selected time.
