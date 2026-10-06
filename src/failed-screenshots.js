@@ -1,0 +1,6 @@
+export function createFailedScreenshots(apiBase,code,version,onStatus=()=>{}){
+ const pending=new Set(),saved=new Set();
+ function memberToken(){let token=localStorage.getItem('lastz-member-token');if(!token){token=Array.from(crypto.getRandomValues(new Uint8Array(32)),b=>b.toString(16).padStart(2,'0')).join('');localStorage.setItem('lastz-member-token',token);}return token;}
+ async function retain(file){if(!file||saved.has(file)||pending.has(file)||!apiBase)return;pending.add(file);onStatus('Saving failed screenshot privately for 7 days...');const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),45000);try{const response=await fetch(apiBase+'/api/failed-screenshots?code='+encodeURIComponent(code)+'&version='+encodeURIComponent(version),{method:'POST',headers:{Authorization:'Bearer '+memberToken(),'Content-Type':file.type},body:file,signal:controller.signal});if(!response.ok||(await response.json()).saved!==true)throw Error();saved.add(file);onStatus('Failed screenshot saved privately for 7 days for leader and automated support.');}catch{onStatus('Could not save the failed screenshot. Keep the original and use Report screenshot issue to retry.');}finally{clearTimeout(timer);pending.delete(file);}}
+ return {retain,retainAll:files=>Promise.all([...files].map(retain))};
+}

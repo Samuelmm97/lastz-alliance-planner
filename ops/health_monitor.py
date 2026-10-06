@@ -1,3 +1,4 @@
+import re
 """Five-minute diagnostic polling; Hermes runs only for actual incidents.
 
 All credentials and incident evidence live in ignored .local. This reads the
@@ -95,6 +96,49 @@ def clean_checkout():
     return result.returncode == 0 and not result.stdout.strip()
 
 
+def retained_evidence(config, codes):
+    cache = LOCAL / 'retained-images'
+    cache.mkdir(parents=True, exist_ok=True)
+    images = []
+    for code in codes:
+        try:
+            listing = request_json(config['api_base'] + '/api/failed-screenshots?code=' + code,
+                                   {'Authorization': 'Bearer ' + config['leader_key']})
+            for image in listing.get('images', [])[:8]:
+                if not re.fullmatch(r'[a-f0-9]{64}', image.get('id', '')):
+                    continue
+                suffix = {'image/jpeg': '.jpg', 'image/png': '.png', 'image/webp': '.webp', 'image/bmp': '.bmp'}.get(image.get('mime'))
+                if not suffix or image['expires_at'] <= time.time()*1000:
+                    continue
+                target = cache / (image['id'] + suffix)
+                request = urllib.request.Request(config['api_base'] + '/api/failed-screenshots?id=' + image['id'],
+                    headers={'Authorization': 'Bearer ' + config['leader_key']})
+                with urllib.request.urlopen(request, timeout=25) as response:
+                    content = response.read(12*1024*1024 + 1)
+                if len(content) > 12*1024*1024:
+                    continue
+                target.write_bytes(content)
+                save(cache / (image['id'] + '.json'), {'path': str(target), 'expires_at': image['expires_at']})
+                images.append({'path': str(target), 'expires_at': image['expires_at'], 'code': code})
+        except Exception:
+            continue
+    return images
+
+
+def cleanup_retained_evidence():
+    cache = (LOCAL / 'retained-images').resolve()
+    if not cache.exists():
+        return
+    for meta in cache.glob('*.json'):
+        value = read(meta)
+        if value.get('expires_at', 0) > time.time()*1000:
+            continue
+        target = Path(value.get('path', '')).resolve()
+        if target.parent == cache and target.is_file():
+            target.unlink()
+        meta.unlink()
+
+
 def run_hermes(config, folder, diagnose_only=False):
     module, launcher = load_launcher(config)
     if not launcher:
@@ -142,6 +186,8 @@ def run_once(dry_run=False, diagnose_only=False):
     state_path = LOCAL / 'state.json'
     state = read(state_path, {'seen': {}, 'queued': {}, 'last_agent_at': 0})
     now = time.time()
+    if not dry_run:
+        cleanup_retained_evidence()
     state.setdefault('queued', {})
     state['seen'] = {k: v for k, v in state.get('seen', {}).items() if now-v < 8*86400}
     try:
@@ -180,14 +226,15 @@ def run_once(dry_run=False, diagnose_only=False):
         state['queued_notified'] = 'attempted'
         save(state_path, state)
         try:
-            notify(config, 'Last Z planner issue: ' + str(len(queue)) + ' grouped incidents. Support codes: ' + ', '.join(codes[:12]) + '. Missing levels observed: ' + str(missing) + '. Hermes investigation queued. Screenshots are not stored; original failed images may be needed.')
+            notify(config, 'Last Z planner issue: ' + str(len(queue)) + ' grouped incidents. Support codes: ' + ', '.join(codes[:12]) + '. Missing levels observed: ' + str(missing) + '. Hermes investigation queued. Failed screenshots are retained privately for 7 days when the upload succeeds; older incidents may lack originals.')
             state['queued_notified'] = 'delivered'
         except Exception:
             state['queued_notified'] = 'unconfirmed'
         save(LOCAL / 'last-alert.json', {'at': now, 'status': state['queued_notified'], 'codes': codes})
     if queue and now-state.get('last_agent_at', 0) >= 3600 and (diagnose_only or clean_checkout()):
         folder = LOCAL / 'incidents' / str(uuid.uuid4())
-        save(folder / 'incident.json', {'at': now, 'groups': queue})
+        images = retained_evidence(config, sorted({e['code'] for group in queue.values() for e in group if re.fullmatch(r'[a-f0-9]{16}', e['code'])}))
+        save(folder / 'incident.json', {'at': now, 'groups': queue, 'screenshots': images})
         # Durable lease and drained queue survive a monitor/PC restart.
         state['last_agent_at'] = now
         state['queued'] = {}
@@ -199,6 +246,13 @@ def run_once(dry_run=False, diagnose_only=False):
             result = run_hermes(config, folder, diagnose_only)
         except Exception as error:
             result = {'recovered': False, 'summary': 'Recovery runner failed: ' + type(error).__name__}
+        # Recovery uses temporary originals only; server retains the seven-day copy.
+        for image in images:
+            target = Path(image['path']).resolve()
+            cache = (LOCAL / 'retained-images').resolve()
+            if target.parent == cache:
+                target.unlink(missing_ok=True)
+                target.with_suffix('.json').unlink(missing_ok=True)
         save(folder / 'outcome.json', result)
         state.pop('active_folder', None)
         state['last_outcome'] = result
