@@ -85,6 +85,46 @@
     "250000": {
       "name": "10 Fuel",
       "gems": null
+    },
+    "210951": {
+      "name": "Blue Electricity Leveled Chest",
+      "gems": null
+    },
+    "230101": {
+      "name": "Orange Skill Book",
+      "gems": null
+    },
+    "210318": {
+      "name": "Blue Hero Fragment",
+      "gems": null
+    },
+    "210319": {
+      "name": "Purple Hero Fragment",
+      "gems": null
+    },
+    "210922": {
+      "name": "Purple EXP Leveled Chest",
+      "gems": null
+    },
+    "210923": {
+      "name": "Orange EXP Leveled Chest",
+      "gems": null
+    },
+    "230100": {
+      "name": "Prime Recruitment Ticket",
+      "gems": null
+    },
+    "200203": {
+      "name": "1h Universal Speedup",
+      "gems": null
+    },
+    "200201": {
+      "name": "5m Universal Speedup",
+      "gems": null
+    },
+    "200205": {
+      "name": "8h Universal Speedup",
+      "gems": null
     }
   },
   "packs": [
