@@ -125,9 +125,1736 @@
     "200205": {
       "name": "8h Universal Speedup",
       "gems": null
+    },
+    "gems-direct": {
+      "name": "Gems",
+      "gems": 1,
+      "genericArt": true
+    },
+    "primary-box": {
+      "name": "Primary Resource Choice Box",
+      "gems": null,
+      "genericArt": true
+    },
+    "orange-box": {
+      "name": "Orange Resource Choice Box",
+      "gems": null,
+      "genericArt": true
+    },
+    "purple-wood": {
+      "name": "Purple Wood Leveled Chest",
+      "gems": null,
+      "genericArt": true
+    },
+    "purple-food": {
+      "name": "Purple Food Leveled Chest",
+      "gems": null,
+      "genericArt": true
+    },
+    "purple-zent": {
+      "name": "Purple Zent Leveled Chest",
+      "gems": null,
+      "genericArt": true
+    },
+    "orange-food": {
+      "name": "Orange Food Leveled Chest",
+      "gems": null,
+      "genericArt": true
+    },
+    "orange-wood": {
+      "name": "Orange Wood Leveled Chest",
+      "gems": null,
+      "genericArt": true
+    },
+    "refugee-ticket": {
+      "name": "Refugee Recruitment Ticket",
+      "gems": null,
+      "genericArt": true
+    },
+    "orange-armor": {
+      "name": "Orange Armor",
+      "gems": null,
+      "genericArt": true
+    },
+    "orange-boots": {
+      "name": "Orange Boots",
+      "gems": null,
+      "genericArt": true
+    },
+    "legendary-equipment": {
+      "name": "Legendary Equipment (choice)",
+      "gems": null,
+      "genericArt": true
+    },
+    "200211": {
+      "name": "5m Building Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "200221": {
+      "name": "5m Research Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "training-15m": {
+      "name": "15m Training Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "training-5m": {
+      "name": "5m Training Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "training-1m": {
+      "name": "1m Training Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "electricity-1k": {
+      "name": "1000 Electricity",
+      "gems": 1,
+      "genericArt": true
+    },
+    "zent-1k": {
+      "name": "1000 Zent",
+      "gems": null,
+      "genericArt": true
+    },
+    "hero-exp": {
+      "name": "Hero EXP",
+      "gems": null,
+      "genericArt": true
+    },
+    "fuel-50": {
+      "name": "50 Fuel",
+      "gems": null,
+      "genericArt": true
+    },
+    "mustbuy-token": {
+      "name": "Daily Must-Buy Token",
+      "gems": null,
+      "genericArt": true
+    },
+    "decor-component": {
+      "name": "Decoration Component",
+      "gems": null,
+      "genericArt": true
+    },
+    "decor-chest": {
+      "name": "Decoration Chest",
+      "gems": null,
+      "genericArt": true
+    },
+    "exclusive-fragment": {
+      "name": "Universal Exclusive Equipment Fragment",
+      "gems": null,
+      "genericArt": true
+    },
+    "scarlett-shard": {
+      "name": "Scarlett Fragment",
+      "gems": null,
+      "genericArt": true
+    },
+    "katrina": {
+      "name": "Katrina unlock",
+      "gems": null,
+      "genericArt": true
+    },
+    "katrina-shard": {
+      "name": "Katrina Fragment",
+      "gems": null,
+      "genericArt": true
+    },
+    "blue-exp": {
+      "name": "Blue EXP Leveled Chest",
+      "gems": null,
+      "genericArt": true
+    },
+    "universal-1m": {
+      "name": "1m Universal Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "building-15m": {
+      "name": "15m Building Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "building-1m": {
+      "name": "1m Building Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "research-15m": {
+      "name": "15m Research Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "research-1m": {
+      "name": "1m Research Speedup",
+      "gems": null,
+      "genericArt": true
+    },
+    "210454": {
+      "name": "Universal Orange Hero Fragment",
+      "gems": null,
+      "genericArt": true
+    },
+    "222003": {
+      "name": "100 VIP Points",
+      "gems": null,
+      "genericArt": true
+    },
+    "vip10": {
+      "name": "10 VIP Points",
+      "gems": null,
+      "genericArt": true
+    },
+    "purple-electricity": {
+      "name": "Purple Electricity Leveled Chest",
+      "gems": null,
+      "genericArt": true
     }
   },
   "packs": [
+    {
+      "id": "pass-wood",
+      "name": "Wood Weekly Pass",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Passes",
+      "tier": "Passes",
+      "contentsComplete": false,
+      "note": "500 immediate gems plus daily claims. Resource passes show extra immediate resources whose amount is not visible. Diamond pass: 2,100 daily + 500 immediate = 2,600 gems. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "210141",
+          "quantity": "9400",
+          "daily": true
+        }
+      ],
+      "claimDays": 7,
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "pass-food",
+      "name": "Food Weekly Pass",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Passes",
+      "tier": "Passes",
+      "contentsComplete": false,
+      "note": "500 immediate gems plus daily claims. Resource passes show extra immediate resources whose amount is not visible. Diamond pass: 2,100 daily + 500 immediate = 2,600 gems. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "210130",
+          "quantity": "9400",
+          "daily": true
+        }
+      ],
+      "claimDays": 7,
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "pass-electricity",
+      "name": "Electricity Weekly Pass",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Passes",
+      "tier": "Passes",
+      "contentsComplete": false,
+      "note": "500 immediate gems plus daily claims. Resource passes show extra immediate resources whose amount is not visible. Diamond pass: 2,100 daily + 500 immediate = 2,600 gems. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "electricity-1k",
+          "quantity": "9400",
+          "daily": true
+        }
+      ],
+      "claimDays": 7,
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "pass-zent",
+      "name": "Zent Weekly Pass",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Passes",
+      "tier": "Passes",
+      "contentsComplete": false,
+      "note": "500 immediate gems plus daily claims. Resource passes show extra immediate resources whose amount is not visible. Diamond pass: 2,100 daily + 500 immediate = 2,600 gems. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "zent-1k",
+          "quantity": "5600",
+          "daily": true
+        }
+      ],
+      "claimDays": 7,
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "pass-exp",
+      "name": "EXP Weekly Pass",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Passes",
+      "tier": "Passes",
+      "contentsComplete": true,
+      "note": "500 immediate gems plus daily claims. Resource passes show extra immediate resources whose amount is not visible. Diamond pass: 2,100 daily + 500 immediate = 2,600 gems. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "hero-exp",
+          "quantity": "39100000",
+          "daily": true
+        }
+      ],
+      "claimDays": 7,
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "pass-diamonds",
+      "name": "Diamond Weekly Pass",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Passes",
+      "tier": "Passes",
+      "contentsComplete": true,
+      "note": "500 immediate gems plus daily claims. Resource passes show extra immediate resources whose amount is not visible. Diamond pass: 2,100 daily + 500 immediate = 2,600 gems. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "300",
+          "daily": true
+        }
+      ],
+      "claimDays": 7,
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "pass-apoca",
+      "name": "ApocaAid Monthly Pass",
+      "goldBars": null,
+      "photo": 1,
+      "batch": "Passes",
+      "tier": "Passes",
+      "contentsComplete": false,
+      "note": "Daily visible rewards only. Research/training quantities, cost and other rewards are unconfirmed. Buffs have no verified gem price.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500",
+          "daily": true
+        },
+        {
+          "id": "200203",
+          "quantity": "5",
+          "daily": true
+        },
+        {
+          "id": "200213",
+          "quantity": "5",
+          "daily": true
+        }
+      ],
+      "claimDays": 30,
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "growth-fund",
+      "name": "Growth Fund",
+      "goldBars": null,
+      "photo": 1,
+      "batch": "Passes",
+      "tier": "Passes",
+      "contentsComplete": false,
+      "note": "Only visible paid milestones HQ 5/8/10/13/16 counted. Later rewards and cost are hidden; free basic rewards excluded.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "8000"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "hero-code-shards",
+      "name": "Hero Code - Universal Orange Hero Fragment",
+      "goldBars": 2499,
+      "photo": 1,
+      "batch": "Hero Code",
+      "tier": "Hero Code",
+      "contentsComplete": false,
+      "note": "Event totals require earning/claiming rewards. Choose one alternative; do not combine choices. More rewards are cut off.",
+      "contents": [
+        {
+          "id": "210454",
+          "quantity": "55"
+        },
+        {
+          "id": "fuel-50",
+          "quantity": "24"
+        },
+        {
+          "id": "230100",
+          "quantity": "30"
+        },
+        {
+          "id": "hero-exp",
+          "quantity": "300000000"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "hero-code-books",
+      "name": "Hero Code - Orange Skill Book",
+      "goldBars": 2499,
+      "photo": 1,
+      "batch": "Hero Code",
+      "tier": "Hero Code",
+      "contentsComplete": true,
+      "note": "Event totals require earning/claiming rewards. Choose one alternative; do not combine choices.",
+      "contents": [
+        {
+          "id": "230101",
+          "quantity": "6000"
+        },
+        {
+          "id": "fuel-50",
+          "quantity": "24"
+        },
+        {
+          "id": "230100",
+          "quantity": "30"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "hero-code-cores",
+      "name": "Hero Code - Power Core",
+      "goldBars": 2499,
+      "photo": 1,
+      "batch": "Hero Code",
+      "tier": "Hero Code",
+      "contentsComplete": true,
+      "note": "Event totals require earning/claiming rewards. Choose one alternative; do not combine choices.",
+      "contents": [
+        {
+          "id": "230109",
+          "quantity": "3000"
+        },
+        {
+          "id": "fuel-50",
+          "quantity": "24"
+        },
+        {
+          "id": "230104",
+          "quantity": "960000"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-skill",
+      "name": "Hero Skill Pack",
+      "goldBars": 9999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "230101",
+          "quantity": "5000"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-core",
+      "name": "Orange Equipment Pack",
+      "goldBars": 9999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "230109",
+          "quantity": "1500"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-exclusive",
+      "name": "Universal Exclusive Equipment Fragment",
+      "goldBars": 9999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "exclusive-fragment",
+          "quantity": "75"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-star",
+      "name": "Star-Up Pack",
+      "goldBars": 9999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "210454",
+          "quantity": "75"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-decor",
+      "name": "Decor Component Pack",
+      "goldBars": 4999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "decor-component",
+          "quantity": "300"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "5000"
+        },
+        {
+          "id": "decor-chest",
+          "quantity": "1"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-blueprint",
+      "name": "Modification Blueprint",
+      "goldBars": 4999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "230111",
+          "quantity": "22500"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "5000"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-alloy",
+      "name": "Equipment Boost Pack",
+      "goldBars": 9999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "230104",
+          "quantity": "1500000"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-speed",
+      "name": "Speedup Pack",
+      "goldBars": 4999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "200203",
+          "quantity": "175"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "5000"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-badge",
+      "name": "Badge Pack",
+      "goldBars": 9999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "200034",
+          "quantity": "13500"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "weekly-mod",
+      "name": "Modification Deal",
+      "goldBars": 9999,
+      "photo": 1,
+      "batch": "Weekly Deal",
+      "tier": "Weekly Deal",
+      "contentsComplete": true,
+      "note": "All visible item rewards counted. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "230112",
+          "quantity": "110"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        },
+        {
+          "id": "230111",
+          "quantity": "13000"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-speed",
+      "name": "Value Speed-Up",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "200201",
+          "quantity": "192"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-mod",
+      "name": "Modification Deal",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "230112",
+          "quantity": "5"
+        },
+        {
+          "id": "230111",
+          "quantity": "750"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-alloy",
+      "name": "Enhancement Alloy",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "230104",
+          "quantity": "75000"
+        },
+        {
+          "id": "210931",
+          "quantity": "10"
+        },
+        {
+          "id": "210941",
+          "quantity": "10"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-hero",
+      "name": "Value Hero Progression",
+      "goldBars": 999,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "230101",
+          "quantity": "300"
+        },
+        {
+          "id": "230104",
+          "quantity": "30000"
+        },
+        {
+          "id": "210931",
+          "quantity": "10"
+        },
+        {
+          "id": "210941",
+          "quantity": "10"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "10"
+        },
+        {
+          "id": "222003",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-decor",
+      "name": "Decoration Deal",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "decor-component",
+          "quantity": "30"
+        },
+        {
+          "id": "universal-1m",
+          "quantity": "10"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-zent",
+      "name": "Value Zents",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "210961",
+          "quantity": "6"
+        },
+        {
+          "id": "purple-zent",
+          "quantity": "6"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-wood",
+      "name": "Wood Sale",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "210931",
+          "quantity": "6"
+        },
+        {
+          "id": "purple-wood",
+          "quantity": "6"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-food",
+      "name": "Food Sale",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "210941",
+          "quantity": "6"
+        },
+        {
+          "id": "purple-food",
+          "quantity": "6"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-electricity",
+      "name": "Electricity Sale",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "210951",
+          "quantity": "6"
+        },
+        {
+          "id": "purple-electricity",
+          "quantity": "6"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "daily-research",
+      "name": "Value Research",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Must-Buy",
+      "tier": "Daily Must-Buy",
+      "contentsComplete": true,
+      "note": "Daily tokens and VIP points need separate gem values. Treasure Points are separate.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "200034",
+          "quantity": "500"
+        },
+        {
+          "id": "zent-1k",
+          "quantity": "40"
+        },
+        {
+          "id": "electricity-1k",
+          "quantity": "40"
+        },
+        {
+          "id": "mustbuy-token",
+          "quantity": "5"
+        },
+        {
+          "id": "222002",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "scarlett-2",
+      "name": "Scarlett Daily Sale - 2 shards",
+      "goldBars": 99,
+      "photo": 1,
+      "batch": "Daily Sale",
+      "tier": "Daily Sale",
+      "contentsComplete": true,
+      "note": "Specific hero shards are not universal shards. 10-shard bundle costs the discounted 499, not crossed-out 697.",
+      "contents": [
+        {
+          "id": "scarlett-shard",
+          "quantity": "2"
+        },
+        {
+          "id": "230100",
+          "quantity": "1"
+        },
+        {
+          "id": "blue-exp",
+          "quantity": "5"
+        },
+        {
+          "id": "vip10",
+          "quantity": "10"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "scarlett-3",
+      "name": "Scarlett Daily Sale - 3 shards",
+      "goldBars": 199,
+      "photo": 1,
+      "batch": "Daily Sale",
+      "tier": "Daily Sale",
+      "contentsComplete": true,
+      "note": "Specific hero shards are not universal shards. 10-shard bundle costs the discounted 499, not crossed-out 697.",
+      "contents": [
+        {
+          "id": "scarlett-shard",
+          "quantity": "3"
+        },
+        {
+          "id": "230100",
+          "quantity": "3"
+        },
+        {
+          "id": "blue-exp",
+          "quantity": "15"
+        },
+        {
+          "id": "vip10",
+          "quantity": "20"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "scarlett-5",
+      "name": "Scarlett Daily Sale - 5 shards",
+      "goldBars": 399,
+      "photo": 1,
+      "batch": "Daily Sale",
+      "tier": "Daily Sale",
+      "contentsComplete": true,
+      "note": "Specific hero shards are not universal shards. 10-shard bundle costs the discounted 499, not crossed-out 697.",
+      "contents": [
+        {
+          "id": "scarlett-shard",
+          "quantity": "5"
+        },
+        {
+          "id": "230100",
+          "quantity": "6"
+        },
+        {
+          "id": "blue-exp",
+          "quantity": "21"
+        },
+        {
+          "id": "vip10",
+          "quantity": "40"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "scarlett-10",
+      "name": "Scarlett Daily Sale - 10 shards",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Sale",
+      "tier": "Daily Sale",
+      "contentsComplete": true,
+      "note": "Specific hero shards are not universal shards. 10-shard bundle costs the discounted 499, not crossed-out 697.",
+      "contents": [
+        {
+          "id": "scarlett-shard",
+          "quantity": "10"
+        },
+        {
+          "id": "230100",
+          "quantity": "10"
+        },
+        {
+          "id": "blue-exp",
+          "quantity": "41"
+        },
+        {
+          "id": "vip10",
+          "quantity": "70"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "katrina-pack",
+      "name": "Katrina Heroes Rally",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Daily Sale",
+      "tier": "Daily Sale",
+      "contentsComplete": false,
+      "note": "Additional rewards scroll off-screen.",
+      "contents": [
+        {
+          "id": "katrina",
+          "quantity": "1"
+        },
+        {
+          "id": "katrina-shard",
+          "quantity": "1"
+        },
+        {
+          "id": "blue-exp",
+          "quantity": "4"
+        },
+        {
+          "id": "primary-box",
+          "quantity": "4"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "rapid-growth",
+      "name": "Rapid Growth",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Pack Shop",
+      "tier": "Pack Shop",
+      "contentsComplete": false,
+      "note": "Resource-box quantity is hidden.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "building-15m",
+          "quantity": "30"
+        },
+        {
+          "id": "200211",
+          "quantity": "40"
+        },
+        {
+          "id": "building-1m",
+          "quantity": "75"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "tech-boost",
+      "name": "Tech Boost",
+      "goldBars": 499,
+      "photo": 1,
+      "batch": "Pack Shop",
+      "tier": "Pack Shop",
+      "contentsComplete": false,
+      "note": "Resource-box quantity is hidden.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "research-15m",
+          "quantity": "30"
+        },
+        {
+          "id": "200221",
+          "quantity": "40"
+        },
+        {
+          "id": "research-1m",
+          "quantity": "75"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "hero-growth",
+      "name": "Hero Growth",
+      "goldBars": 1999,
+      "photo": 1,
+      "batch": "Pack Shop",
+      "tier": "Pack Shop",
+      "contentsComplete": false,
+      "note": "Three visible stacks of 15; remaining rewards hidden.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "2000"
+        },
+        {
+          "id": "blue-exp",
+          "quantity": "45"
+        }
+      ],
+      "source": "Member screenshots: second/third pack batches"
+    },
+    {
+      "id": "screen-vip7",
+      "name": "VIP 7 Exclusive Chest",
+      "tier": "In-game screenshot",
+      "goldBars": 4999,
+      "photo": 1,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Lifetime limit: 1. Additional rewards may be off-screen.",
+      "contents": [
+        {
+          "id": "orange-armor",
+          "quantity": "1"
+        },
+        {
+          "id": "orange-boots",
+          "quantity": "1"
+        },
+        {
+          "id": "210922",
+          "quantity": "15"
+        }
+      ]
+    },
+    {
+      "id": "screen-research",
+      "name": "Research Expert",
+      "tier": "In-game screenshot",
+      "goldBars": 499,
+      "photo": 2,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Limit: 3. Remaining reward rows are hidden below the timer.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "200221",
+          "quantity": "120"
+        },
+        {
+          "id": "200223",
+          "quantity": "10"
+        },
+        {
+          "id": "200034",
+          "quantity": "200"
+        }
+      ]
+    },
+    {
+      "id": "screen-equipment",
+      "name": "Legendary Equipment",
+      "tier": "In-game screenshot",
+      "goldBars": 4999,
+      "photo": 3,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Limit: 2. Reward strip may scroll horizontally; remaining contents are unconfirmed.",
+      "contents": [
+        {
+          "id": "legendary-equipment",
+          "quantity": "1"
+        },
+        {
+          "id": "gems-direct",
+          "quantity": "5000"
+        },
+        {
+          "id": "230104",
+          "quantity": "350000"
+        },
+        {
+          "id": "210130",
+          "quantity": "500"
+        }
+      ]
+    },
+    {
+      "id": "screen-refugee",
+      "name": "Refugee Recruitment",
+      "tier": "In-game screenshot",
+      "goldBars": 999,
+      "photo": 4,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Limit: 3. Remaining reward rows are hidden below the timer.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        },
+        {
+          "id": "refugee-ticket",
+          "quantity": "7500"
+        },
+        {
+          "id": "primary-box",
+          "quantity": "8"
+        },
+        {
+          "id": "purple-wood",
+          "quantity": "2"
+        }
+      ]
+    },
+    {
+      "id": "screen-resource",
+      "name": "Resource Pack",
+      "tier": "In-game screenshot",
+      "goldBars": 499,
+      "photo": 5,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Limit: 1. Building speedup quantity and remaining rows are obscured.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "orange-box",
+          "quantity": "4"
+        },
+        {
+          "id": "orange-food",
+          "quantity": "2"
+        },
+        {
+          "id": "orange-wood",
+          "quantity": "2"
+        }
+      ]
+    },
+    {
+      "id": "screen-builder",
+      "name": "Rapid Builder",
+      "tier": "In-game screenshot",
+      "goldBars": 499,
+      "photo": 6,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Limit: 3. Remaining reward rows are hidden below the timer.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "200211",
+          "quantity": "120"
+        },
+        {
+          "id": "200213",
+          "quantity": "10"
+        },
+        {
+          "id": "purple-zent",
+          "quantity": "3"
+        }
+      ]
+    },
+    {
+      "id": "screen-alloy",
+      "name": "Enhancement Alloy",
+      "tier": "In-game screenshot",
+      "goldBars": 1999,
+      "photo": 8,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "VIP points and possible additional rewards are off-screen.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "2000"
+        },
+        {
+          "id": "230104",
+          "quantity": "200000"
+        },
+        {
+          "id": "210130",
+          "quantity": "400"
+        },
+        {
+          "id": "210141",
+          "quantity": "400"
+        }
+      ]
+    },
+    {
+      "id": "screen-core",
+      "name": "Power Core Sale",
+      "tier": "In-game screenshot",
+      "goldBars": 4999,
+      "photo": 8,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "VIP-point quantity and possible additional rewards are off-screen.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "5000"
+        },
+        {
+          "id": "230109",
+          "quantity": "500"
+        },
+        {
+          "id": "210130",
+          "quantity": "500"
+        },
+        {
+          "id": "210141",
+          "quantity": "500"
+        }
+      ]
+    },
+    {
+      "id": "screen-wrench",
+      "name": "Golden Wrench",
+      "tier": "In-game screenshot",
+      "goldBars": 9999,
+      "photo": 9,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "VIP-point quantity and possible additional rewards are off-screen.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        },
+        {
+          "id": "230112",
+          "quantity": "80"
+        },
+        {
+          "id": "210130",
+          "quantity": "1000"
+        },
+        {
+          "id": "210141",
+          "quantity": "1000"
+        }
+      ]
+    },
+    {
+      "id": "screen-arrival",
+      "name": "Arrival of Heroes",
+      "tier": "In-game screenshot",
+      "goldBars": 4999,
+      "photo": 10,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Food quantity and possible additional rewards are cut off.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "5000"
+        },
+        {
+          "id": "230100",
+          "quantity": "75"
+        },
+        {
+          "id": "primary-box",
+          "quantity": "40"
+        },
+        {
+          "id": "210141",
+          "quantity": "200"
+        }
+      ]
+    },
+    {
+      "id": "screen-training",
+      "name": "Force Expansion",
+      "tier": "In-game screenshot",
+      "goldBars": 499,
+      "photo": 10,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Resource choice-box quantity and possible additional rewards are cut off.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "training-15m",
+          "quantity": "30"
+        },
+        {
+          "id": "training-5m",
+          "quantity": "40"
+        },
+        {
+          "id": "training-1m",
+          "quantity": "75"
+        }
+      ]
+    },
+    {
+      "id": "screen-blueprint",
+      "name": "Modification Blueprint",
+      "tier": "In-game screenshot",
+      "goldBars": 499,
+      "photo": 9,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Blueprint quantity is off-screen. VIP points and chest rewards are unconfirmed.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        },
+        {
+          "id": "210130",
+          "quantity": "100"
+        },
+        {
+          "id": "210141",
+          "quantity": "100"
+        }
+      ]
+    },
+    {
+      "id": "screen-badge",
+      "name": "Honorary Badge",
+      "tier": "In-game screenshot",
+      "goldBars": 99,
+      "photo": 10,
+      "source": "Member pack screenshots",
+      "contentsComplete": false,
+      "note": "Three fully visible stacks of 25 badges; another stack and further contents are cut off.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "100"
+        },
+        {
+          "id": "200034",
+          "quantity": "75"
+        }
+      ]
+    },
+    {
+      "id": "diamonds-100",
+      "name": "Diamond Offer",
+      "tier": "In-game screenshot",
+      "goldBars": 99,
+      "photo": 7,
+      "source": "Member pack screenshots",
+      "contentsComplete": true,
+      "note": "Standard diamond amount. First-purchase bonus is optional; bonus currency has no verified gem price.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "100"
+        }
+      ],
+      "firstPurchaseBonus": 100
+    },
+    {
+      "id": "diamonds-500",
+      "name": "Diamond Offer",
+      "tier": "In-game screenshot",
+      "goldBars": 499,
+      "photo": 7,
+      "source": "Member pack screenshots",
+      "contentsComplete": true,
+      "note": "Standard diamond amount. First-purchase bonus is optional; bonus currency has no verified gem price.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "500"
+        }
+      ],
+      "firstPurchaseBonus": 500
+    },
+    {
+      "id": "diamonds-1000",
+      "name": "Diamond Offer",
+      "tier": "In-game screenshot",
+      "goldBars": 999,
+      "photo": 7,
+      "source": "Member pack screenshots",
+      "contentsComplete": true,
+      "note": "Standard diamond amount. First-purchase bonus is optional; bonus currency has no verified gem price.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "1000"
+        }
+      ],
+      "firstPurchaseBonus": 1000
+    },
+    {
+      "id": "diamonds-2000",
+      "name": "Diamond Offer",
+      "tier": "In-game screenshot",
+      "goldBars": 1999,
+      "photo": 7,
+      "source": "Member pack screenshots",
+      "contentsComplete": true,
+      "note": "Standard diamond amount. First-purchase bonus is optional; bonus currency has no verified gem price.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "2000"
+        }
+      ],
+      "firstPurchaseBonus": 2000
+    },
+    {
+      "id": "diamonds-5000",
+      "name": "Diamond Offer",
+      "tier": "In-game screenshot",
+      "goldBars": 4999,
+      "photo": 7,
+      "source": "Member pack screenshots",
+      "contentsComplete": true,
+      "note": "Standard diamond amount. First-purchase bonus is optional; bonus currency has no verified gem price.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "5000"
+        }
+      ],
+      "firstPurchaseBonus": 5000
+    },
+    {
+      "id": "diamonds-10000",
+      "name": "Diamond Offer",
+      "tier": "In-game screenshot",
+      "goldBars": 9999,
+      "photo": 7,
+      "source": "Member pack screenshots",
+      "contentsComplete": true,
+      "note": "Standard diamond amount. First-purchase bonus is optional; bonus currency has no verified gem price.",
+      "contents": [
+        {
+          "id": "gems-direct",
+          "quantity": "10000"
+        }
+      ],
+      "firstPurchaseBonus": 10000
+    },
     {
       "id": "777772038",
       "name": "Badge Pack",
