@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {valuePack,rankPacks,mountPackValue} from '../src/pack-value.js';
+import {valuePack,rankPacks,mountCustomPackValue} from '../src/pack-value.js';
 test('mixed pack contents add to gem replacement value and rank per gold bar',()=>{
  const p={goldBars:10,contents:[{item:'gems',quantity:100},{item:'construction',quantity:5},{item:'shards',quantity:2}]};
  const value=valuePack(p,{construction:60,shards:200});
@@ -9,7 +9,7 @@ test('mixed pack contents add to gem replacement value and rank per gold bar',()
 });
 test('gem comparison renders its contents, baseline and incomplete-state guidance',()=>{
  const results={innerHTML:''},container={innerHTML:'',querySelector:()=>results};
- mountPackValue(container);
+ mountCustomPackValue(container);
  assert.match(container.innerHTML,/Gold-bar cost/);
  assert.match(container.innerHTML,/Regular shop gem prices/);
  assert.match(container.innerHTML,/Add item/);
@@ -28,3 +28,4 @@ test('blank rows are ignored, custom item prices work and invalid quantities are
  assert.equal(valuePack({...p,contents:[{item:'gems',quantity:-3}]},{}).complete,false);
  assert.equal(valuePack({...p,contents:[]},{}).complete,false);
 });
+

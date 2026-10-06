@@ -1,0 +1,551 @@
+{
+  "checked": "2026-10-05",
+  "source": "https://store.last-z.com/",
+  "items": {
+    "200034": {
+      "name": "Badge",
+      "gems": null
+    },
+    "200223": {
+      "name": "1h Research Speedup",
+      "gems": null
+    },
+    "210961": {
+      "name": "Blue Zent Leveled Chest",
+      "gems": null
+    },
+    "210931": {
+      "name": "Wood Level Chest",
+      "gems": null
+    },
+    "210941": {
+      "name": "Food Level Chest",
+      "gems": null
+    },
+    "222002": {
+      "name": "50 VIP Points",
+      "gems": null
+    },
+    "200364": {
+      "name": "100 Diamonds",
+      "gems": 100
+    },
+    "253014": {
+      "name": "Orange Equipment Choice Box",
+      "gems": null
+    },
+    "230104": {
+      "name": "Enhancement Alloy",
+      "gems": null
+    },
+    "210130": {
+      "name": "1000 Food",
+      "gems": null
+    },
+    "210141": {
+      "name": "1000 Wood",
+      "gems": null
+    },
+    "222004": {
+      "name": "500 VIP Points",
+      "gems": null
+    },
+    "200367": {
+      "name": "Diamond",
+      "gems": 5000
+    },
+    "230109": {
+      "name": "Power Core",
+      "gems": null
+    },
+    "200368": {
+      "name": "Diamond",
+      "gems": 10000
+    },
+    "230112": {
+      "name": "Golden Wrench",
+      "gems": null
+    },
+    "230111": {
+      "name": "Modification Blueprint",
+      "gems": null
+    },
+    "200213": {
+      "name": "1h Construct Speedup",
+      "gems": null
+    },
+    "200233": {
+      "name": "1-Hour Training Speedup",
+      "gems": null
+    },
+    "200002": {
+      "name": "Advanced Teleporter",
+      "gems": null
+    },
+    "250000": {
+      "name": "10 Fuel",
+      "gems": null
+    }
+  },
+  "packs": [
+    {
+      "id": "777772038",
+      "name": "Badge Pack",
+      "tier": "Tier 1",
+      "contents": [
+        {
+          "id": "200034",
+          "quantity": "2.5K"
+        },
+        {
+          "id": "200223",
+          "quantity": "25"
+        },
+        {
+          "id": "210961",
+          "quantity": "20"
+        },
+        {
+          "id": "210931",
+          "quantity": "20"
+        },
+        {
+          "id": "210941",
+          "quantity": "20"
+        },
+        {
+          "id": "222002",
+          "quantity": "20"
+        },
+        {
+          "id": "200364",
+          "quantity": "10"
+        }
+      ]
+    },
+    {
+      "id": "777772107",
+      "name": "Legendary Equipment Sale",
+      "tier": "Tier 4",
+      "contents": [
+        {
+          "id": "253014",
+          "quantity": "1"
+        },
+        {
+          "id": "230104",
+          "quantity": "350K"
+        },
+        {
+          "id": "210130",
+          "quantity": "500"
+        },
+        {
+          "id": "210141",
+          "quantity": "500"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        },
+        {
+          "id": "200367",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772108",
+      "name": "Legendary Equipment Sale",
+      "tier": "Tier 5",
+      "contents": [
+        {
+          "id": "253014",
+          "quantity": "1"
+        },
+        {
+          "id": "230109",
+          "quantity": "300"
+        },
+        {
+          "id": "230104",
+          "quantity": "700K"
+        },
+        {
+          "id": "210130",
+          "quantity": "1K"
+        },
+        {
+          "id": "210141",
+          "quantity": "1K"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        },
+        {
+          "id": "200368",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772001",
+      "name": "Premium Modification Pack",
+      "tier": "Tier 4",
+      "contents": [
+        {
+          "id": "230112",
+          "quantity": "62"
+        },
+        {
+          "id": "230111",
+          "quantity": "10K"
+        },
+        {
+          "id": "210961",
+          "quantity": "100"
+        },
+        {
+          "id": "210931",
+          "quantity": "100"
+        },
+        {
+          "id": "210941",
+          "quantity": "100"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        },
+        {
+          "id": "200367",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772002",
+      "name": "Premium Enhancement Alloy",
+      "tier": "Tier 4",
+      "contents": [
+        {
+          "id": "230104",
+          "quantity": "900K"
+        },
+        {
+          "id": "200213",
+          "quantity": "15"
+        },
+        {
+          "id": "210961",
+          "quantity": "100"
+        },
+        {
+          "id": "210931",
+          "quantity": "100"
+        },
+        {
+          "id": "210941",
+          "quantity": "100"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        },
+        {
+          "id": "200367",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772003",
+      "name": "Power Core Sale",
+      "tier": "Tier 4",
+      "contents": [
+        {
+          "id": "230109",
+          "quantity": "900"
+        },
+        {
+          "id": "200233",
+          "quantity": "25"
+        },
+        {
+          "id": "200002",
+          "quantity": "1"
+        },
+        {
+          "id": "210961",
+          "quantity": "100"
+        },
+        {
+          "id": "210931",
+          "quantity": "100"
+        },
+        {
+          "id": "210941",
+          "quantity": "100"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        },
+        {
+          "id": "200367",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772004",
+      "name": "Badge Pack",
+      "tier": "Tier 4",
+      "contents": [
+        {
+          "id": "200034",
+          "quantity": "7.5K"
+        },
+        {
+          "id": "200223",
+          "quantity": "15"
+        },
+        {
+          "id": "210961",
+          "quantity": "100"
+        },
+        {
+          "id": "210931",
+          "quantity": "100"
+        },
+        {
+          "id": "210941",
+          "quantity": "100"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        },
+        {
+          "id": "200367",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772005",
+      "name": "Premium Modification Pack",
+      "tier": "Tier 5",
+      "contents": [
+        {
+          "id": "230112",
+          "quantity": "125"
+        },
+        {
+          "id": "230111",
+          "quantity": "20K"
+        },
+        {
+          "id": "210961",
+          "quantity": "200"
+        },
+        {
+          "id": "210931",
+          "quantity": "200"
+        },
+        {
+          "id": "210941",
+          "quantity": "200"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        },
+        {
+          "id": "200368",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772006",
+      "name": "Premium Enhancement Alloy",
+      "tier": "Tier 5",
+      "contents": [
+        {
+          "id": "230104",
+          "quantity": "1.8M"
+        },
+        {
+          "id": "200213",
+          "quantity": "30"
+        },
+        {
+          "id": "210961",
+          "quantity": "200"
+        },
+        {
+          "id": "210931",
+          "quantity": "200"
+        },
+        {
+          "id": "210941",
+          "quantity": "200"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        },
+        {
+          "id": "200368",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772007",
+      "name": "Power Core Sale",
+      "tier": "Tier 5",
+      "contents": [
+        {
+          "id": "230109",
+          "quantity": "1.8K"
+        },
+        {
+          "id": "200233",
+          "quantity": "50"
+        },
+        {
+          "id": "200002",
+          "quantity": "1"
+        },
+        {
+          "id": "210961",
+          "quantity": "200"
+        },
+        {
+          "id": "210931",
+          "quantity": "200"
+        },
+        {
+          "id": "210941",
+          "quantity": "200"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        },
+        {
+          "id": "200368",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772008",
+      "name": "Badge Pack",
+      "tier": "Tier 5",
+      "contents": [
+        {
+          "id": "200034",
+          "quantity": "15K"
+        },
+        {
+          "id": "200223",
+          "quantity": "30"
+        },
+        {
+          "id": "210961",
+          "quantity": "200"
+        },
+        {
+          "id": "210931",
+          "quantity": "200"
+        },
+        {
+          "id": "210941",
+          "quantity": "200"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        },
+        {
+          "id": "200368",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772026",
+      "name": "Purchase fuel",
+      "tier": "Tier 4",
+      "contents": [
+        {
+          "id": "250000",
+          "quantity": "50"
+        },
+        {
+          "id": "200233",
+          "quantity": "25"
+        },
+        {
+          "id": "210961",
+          "quantity": "100"
+        },
+        {
+          "id": "210931",
+          "quantity": "100"
+        },
+        {
+          "id": "210941",
+          "quantity": "100"
+        },
+        {
+          "id": "222004",
+          "quantity": "10"
+        },
+        {
+          "id": "200367",
+          "quantity": "1"
+        }
+      ]
+    },
+    {
+      "id": "777772046",
+      "name": "Purchase fuel",
+      "tier": "Tier 5",
+      "contents": [
+        {
+          "id": "250000",
+          "quantity": "100"
+        },
+        {
+          "id": "200233",
+          "quantity": "50"
+        },
+        {
+          "id": "210961",
+          "quantity": "200"
+        },
+        {
+          "id": "210931",
+          "quantity": "200"
+        },
+        {
+          "id": "210941",
+          "quantity": "200"
+        },
+        {
+          "id": "222004",
+          "quantity": "20"
+        },
+        {
+          "id": "200368",
+          "quantity": "1"
+        }
+      ]
+    }
+  ]
+}

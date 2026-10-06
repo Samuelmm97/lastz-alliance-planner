@@ -1,0 +1,1 @@
+Official Last Z Store artwork and public pack snapshot, retrieved 2026-10-05. Source: https://store.last-z.com/. Non-diamond gem prices and gold-bar redemption costs remain unverified. Z Points are not gems.

@@ -1,3 +1,4 @@
+import { mountPackCatalog } from './pack-catalog.js';
 import {itemArt,icon} from './visuals.js';
 export const packItems={gems:['Gems','gems'],construction:['Construction speedups','hours'],research:['Research speedups','hours'],universal:['Universal speedups','hours'],shards:['Orange universal shards','shards'],purpleShards:['Purple universal shards','shards'],blueShards:['Blue universal shards','shards'],books:['Orange skill books','books'],core:['Power cores','cores'],alloy:['Enhancement alloys','alloys'],recruit:['Prime recruit tickets','tickets'],other:['Other item','items']};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -19,7 +20,7 @@ export function valuePack(pack,rates){
 export function rankPacks(packs,rates){return packs.map(p=>valuePack(p,rates)).filter(p=>p.complete).sort((a,b)=>b.gemsPerBar-a.gemsPerBar);}
 const emptyPack=()=>({name:'',goldBars:'',contents:[{item:'gems',quantity:'',gemRate:''}]});
 const art=key=>key==='gems'?icon('gem'):key==='other'?icon('target'):itemArt(key);
-export function mountPackValue(container){
+export function mountCustomPackValue(container){
  let saved={version:2,rates:{},packs:[emptyPack(),emptyPack()]};
  try{const data=JSON.parse(localStorage.getItem('lastz-pack-gem-value'));if(data?.version===2&&data.rates&&Array.isArray(data.packs)&&data.packs.length>=2&&data.packs.length<=6&&data.packs.every(p=>Array.isArray(p.contents)&&p.contents.length<=30&&p.contents.every(l=>packItems[l.item])))saved=data;}catch{}
  const fmt=n=>n.toLocaleString(undefined,{maximumFractionDigits:2});
@@ -37,3 +38,10 @@ export function mountPackValue(container){
  container.onclick=e=>{const el=e.target.closest('button');if(!el)return;if(el.hasAttribute('data-add-item')){const p=saved.packs[Number(el.dataset.addItem)];if(p.contents.length<30)p.contents.push({item:'construction',quantity:'',gemRate:''});}else if(el.hasAttribute('data-remove'))saved.packs[Number(el.dataset.remove)].contents.splice(Number(el.dataset.line),1);else if(el.hasAttribute('data-pack-add')&&saved.packs.length<6)saved.packs.push(emptyPack());else if(el.hasAttribute('data-pack-clear'))saved.packs=[emptyPack(),emptyPack()];else return;persist();render();};
  render();
 }
+
+export function mountPackValue(container){
+ container.innerHTML=`<div class="actions"><button data-mode="catalog" aria-pressed="true">In-game packs</button><button data-mode="custom" aria-pressed="false">Custom packs</button></div><div data-pack-body></div>`;
+ const body=container.querySelector("[data-pack-body]");mountPackCatalog(body);
+ container.querySelectorAll("[data-mode]").forEach(button=>button.onclick=()=>{container.querySelectorAll("[data-mode]").forEach(b=>b.setAttribute("aria-pressed",String(b===button)));if(button.dataset.mode==="catalog")mountPackCatalog(body);else mountCustomPackValue(body);});
+}
+
